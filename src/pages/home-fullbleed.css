@@ -1,0 +1,186 @@
+/* === HERO STYLES START HERE === */
+
+/* Base Home Section Styles */
+.home-section {
+  background: transparent;
+  color: var(--color-text);
+  overflow: visible;
+  font-family: var(--font-sans);
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.home .home-content {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+.hero-img {
+  width: 400px;
+  height: auto;
+  margin-top: 3vh;
+  margin-left: 60px;
+  -webkit-filter: drop-shadow(0px 18px 40px rgba(var(--color-primary-rgb), 0.5));
+  filter: drop-shadow(0px 18px 40px rgba(var(--color-primary-rgb), 0.5));
+  object-fit: contain;
+  overflow: visible;
+}
+
+.hero-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.home .home-content .text-1 {
+  margin-top: 11vh;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: 128px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.home .home-content .text-2 {
+  font-family: var(--font-sans);
+  font-size: 36px;
+  color: var(--color-accent);
+  margin-top: 12.5px;
+}
+.home .home-content .text-3 {
+  line-height: 1.8;
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 24px;
+  color: #6C7999;
+  margin-top: 25px;
+}
+.home .links { margin: 0; padding: 0; }
+.home .links li { list-style: none; display: inline-block; margin-top: 75px; }
+.home .links .resume a {
+  display: inline-block;
+  border-radius: 100px;
+  color: #fff;
+  background: var(--color-accent);
+  font-size: 30px;
+  padding: 16px 66px;
+  transition: all 0.2s ease;
+}
+.home .links .contact a {
+  display: inline-block;
+  border-radius: 100px;
+  color: var(--color-accent);
+  background: white;
+  font-size: 30px;
+  margin-left: 40px;
+  padding: 12px 40px;
+  border: 3px solid var(--color-accent);
+  transition: all 0.2s ease;
+}
+.home .home-content .links .resume a:hover {
+  color: var(--color-accent);
+  background: white;
+  border: 3px solid var(--color-accent);
+  padding: 14px 60px;
+}
+.home .home-content .links .contact a:hover {
+  color: white;
+  background: var(--color-accent);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1600px) {
+  .container-wide {
+    padding: 0 100px;
+  }
+}
+
+@media (max-width: 1390px) {
+  .container-wide {
+    padding: 0 70px;
+  }
+  .home .home-content .text-1 { font-size: 72px; }
+  .home .home-content .text-2 { font-size: 34px; }
+  .home .home-content .text-3 { font-size: 22px; }
+  .home .links .resume a { font-size: 26px; padding: 16px 66px; }
+  .home .links .contact a { font-size: 26px; margin-left: 15px; padding: 12px 40px; }
+  .home .home-content .links .resume a:hover { padding: 13px 60px; }
+}
+
+@media (max-width: 1225px) {
+  .home .home-content .text-1 { font-size: 72px; }
+  .home .home-content .text-2 { font-size: 32px; }
+  .home .home-content .text-3 { font-size: 20px; }
+  .home .links .resume a { font-size: 24px; padding: 14px 60px; }
+  .home .links .contact a { font-size: 24px; margin-left: 10px; padding: 10px 36px; }
+  .hero-img { width: 360px; }
+}
+
+@media (max-width: 1075px) {
+  .hero-img { width: 330px; }
+}
+
+@media (max-width: 990px) {
+  .home .home-content .text-1 { font-size: 72px; }
+  .home .home-content .text-2 { font-size: 30px; }
+  .home .home-content .text-3 { font-size: 19px; }
+  .hero-img { width: 300px; }
+}
+
+@media (max-width: 815px) {
+  .hero { flex-direction: column; text-align: center; }
+  .hero-img { display: none; }
+  .home .home-content .text-1 { font-size: 72px; }
+  .home .home-content .text-2 { font-size: 44px; }
+  .home .home-content .text-3 { font-size: 24px; }
+  .home .links li { display: block; margin: 20px 0; }
+  .home .links .contact a { margin-left: 0; }
+}
+
+@media (max-width: 750px) {
+  .home .home-content .text-1 { font-size: 15vw; }
+}
+
+@media (max-width: 570px) {
+  .home .home-content .text-1 { font-size: 17vw; }
+  .home .home-content .text-2 { font-size: 33px; }
+  .home .home-content .text-3 { font-size: 19px; line-height: 1.8; }
+}
+
+@media (max-width: 460px) {
+  .home .home-content .text-1 { font-size: 17vw; }
+  .home .home-content .text-2 { font-size: 27px; }
+  .home .home-content .text-3 { font-size: 16px; }
+}
+
+
+/* === PROJECT LIST STYLES === */
+.fullbleed-list {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.fullbleed-item {
+  display: block;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid #E5E7EB;
+}
+
+.fullbleed-item img {
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .fullbleed-item img { height: 75vh; }
+}
+
+

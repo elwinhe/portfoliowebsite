@@ -1,0 +1,38 @@
+.bg-circles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-circles .circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+  background: var(--circle-color, var(--color-primary));
+  transform: translate(-50%, calc(-50% + var(--circle-offset, 0px)));
+  transition: background 160ms linear;
+}
+
+.bg-circles .circle-1 {
+  top: 20vh;
+  left: 15vw;
+  width: 40vw;
+  height: 40vw;
+}
+
+.bg-circles .circle-2 {
+  top: 70vh;
+  left: 80vw;
+  width: 50vw;
+  height: 50vw;
+  transform: translate(-50%, calc(-50% + var(--circle-2-offset, 0px)));
+}
+
+@media (max-width: 767px) {
+  .bg-circles .circle-1 { top: 25vh; left: 25vw; width: 70vw; height: 70vw; }
+  .bg-circles .circle-2 { top: 75vh; left: 85vw; width: 80vw; height: 80vw; }
+}
+
+
