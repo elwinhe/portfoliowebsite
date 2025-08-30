@@ -16,11 +16,11 @@ export default function Home() {
               shipping product, design systems, and thoughtful interfaces.
             </div>
             <ul className="links">
-              <li className="resume"><a href="#contact">Get In Touch</a></li>
-              <li className="contact"><a href="#projects-heading">View Work</a></li>
+              <li className="resume"><a href="#contact">Resume</a></li>
+              <li className="contact"><a href="#projects-heading">Get in touch</a></li>
             </ul>
           </div>
-          <img className="hero-img" src={new URL('../assets/elwinhe_pfp_clean.png', import.meta.url).href} alt="Portrait of Elwin He" />
+          <img className="hero-img" src={new URL('../assets/elwinhe_pfp_purp.png', import.meta.url).href} alt="Portrait of Elwin He" />
         </div>
       </section>
 

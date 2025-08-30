@@ -28,7 +28,6 @@
   -webkit-filter: drop-shadow(0px 18px 40px rgba(var(--color-primary-rgb), 0.5));
   filter: drop-shadow(0px 18px 40px rgba(var(--color-primary-rgb), 0.5));
   width: 420px;
-  height: auto;
   margin-left: 60px;
   object-fit: contain;
   overflow: visible;
@@ -39,7 +38,7 @@
   margin-top: 11vh;
   font-family: var(--font-sans);
   font-weight: var(--font-weight-bold);
-  font-size: clamp(40px, 13vw, 132px);
+  font-size: clamp(40px, 13vw, 136px);
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
@@ -48,7 +47,7 @@
   font-family: var(--font-sans);
   font-weight: var(--font-weight-medium);
   font-size: clamp(12px, 4vw, 36px);
-  color: var(--color-accent);
+  color: var(--color-primary);
   margin-top: 12.5px;
 }
 .home .home-content .text-3 {
@@ -67,7 +66,7 @@
   display: inline-block;
   border-radius: 100px;
   color: #fff;
-  background: var(--color-accent);
+  background: var(--color-primary);
   font-size: 30px;
   padding: 14px 66px;
   transition: all 0.2s ease;
@@ -75,23 +74,25 @@
 .home .links .contact a {
   display: inline-block;
   border-radius: 100px;
-  color: var(--color-accent);
-  background: white;
+  color: var(--color-primary);
+  background: var(--color-background);
   font-size: 30px;
   margin-left: 0;
   padding: 12px 40px;
-  border: 3px solid var(--color-accent);
-  transition: all 0.2s ease;
+  border: 3px solid var(--color-primary);
+  transition: all 0.2s ease, box-shadow 0.2s ease;
 }
 .home .home-content .links .resume a:hover {
-  color: var(--color-accent);
-  background: white;
-  border: 3px solid var(--color-accent);
-  padding: 12px 60px;
+  color: #fff;
+  background: var(--color-primary-light);
+  filter: brightness(1.05);
+  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
+  padding: 14px 66px;
 }
 .home .home-content .links .contact a:hover {
-  color: white;
-  background: var(--color-accent);
+  color: var(--color-primary);
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.25);
 }
 
 /* Responsive Media Queries */
@@ -108,26 +109,31 @@
   .hero-img {
     display: block;
     width: 400px;
-    height: auto;
   }
   .home .links li { display: inline-block; margin-top: 75px; }
   .home .links .contact a { margin-left: 40px; }
 }
 
-@media (max-width: 1870px) {
-  .hero-img { width: 400px; }
-  .home .home-content .text-1 { font-size: 104px; }
+@media (max-width: 1930px) {
+  .home .home-content .text-1 { font-size: 116px; }
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1800px) {
+  .home .home-content .text-1 { font-size: 108px; }
+}
+
+@media (max-width: 1620px) {
   .hero-img { width: 360px; }
   .container-wide { padding: 0 100px; }
   .home .links { margin: 0; padding: 0; }
 }
 
-@media (max-width: 1360px) {
+@media (max-width: 1420px) {
   .hero-img { width: 340px; }
   .home .home-content .text-1 { font-size: 84px; }
+  .home .links .contact a {
+    margin-left: 16px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -141,7 +147,11 @@
     margin-left: 10px;
   }
   .home .home-content .links .resume a:hover {
-    padding: 12px 56px;
+    color: #fff;
+    background: var(--color-primary);
+    filter: brightness(1.05);
+    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
+    padding: 12px 60px;
   }
 }
 
@@ -154,7 +164,13 @@
     padding: 12px 28px;
     margin-left: 10px;
   }
-  
+  .home .home-content .links .resume a:hover {
+    color: #fff;
+    background: var(--color-primary);
+    filter: brightness(1.05);
+    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
+    padding: 12px 48px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -169,7 +185,13 @@
     padding: 12px 26px;
     margin-left: 10px;
   }
-
+  .home .home-content .links .resume a:hover {
+    color: #fff;
+    background: var(--color-primary);
+    filter: brightness(1.05);
+    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
+    padding: 12px 44px;
+  }
 }
 
 @media (max-width: 910px) {
@@ -188,7 +210,6 @@
 
 }
 
-
 @media (max-width: 816px) {
   .home .links .resume a,
   .home .links .contact a {
@@ -203,10 +224,9 @@
   }
   /* Ensure fluid type below 815px */
   .home .home-content .text-1 { font-size: clamp(40px, 13vw, 144px); }
-  .home .home-content .text-2 { font-size: clamp(20px, 6vw, 48px); }
+  .home .home-content .text-2 { font-size: clamp(24px, 6vw, 48px); }
   .home .links { margin: 0; padding: 20px 0; }
 }
-
 
 /* === PROJECT LIST STYLES === */
 .fullbleed-list {

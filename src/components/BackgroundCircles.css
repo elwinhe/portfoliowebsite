@@ -10,7 +10,7 @@
   position: absolute;
   border-radius: 50%;
   opacity: 0.25;
-  background: var(--circle-color, var(--color-primary));
+  background: var(--circle-color, var(--color-accent));
   transform: translate(-50%, calc(-50% + var(--circle-offset, 0px)));
   transition: background 160ms linear;
 }

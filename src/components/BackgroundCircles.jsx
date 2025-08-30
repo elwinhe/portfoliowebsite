@@ -19,8 +19,8 @@ export default function BackgroundCircles() {
       el.style.setProperty('--circle-2-offset', `${y2}px`)
 
       const lerp = (a, b, t) => Math.round(a + (b - a) * t)
-      const from = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim()
-      const to = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim()
+      const from = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim()
+      const to = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim()
 
       const hexToRgb = (hex) => {
         const h = hex.replace('#','')

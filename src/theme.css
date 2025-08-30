@@ -2,13 +2,14 @@
 
 :root {
   /* Colors */
-  --color-background: #ECEAEF;
+  --color-background: #F1F0F2;
   --color-text: #0F0F0D;
   --color-secondary: #CCB81F;
-  --color-accent: #5E25CC;
-  --color-accent-rgb: 94, 37, 204;
-  --color-primary: #83CC25;
-  --color-primary-rgb: 131, 204, 37;
+  --color-primary: #5E25CC;
+  --color-primary-light: #6b32da;
+  --color-primary-rgb: 94, 37, 204;
+  --color-accent: #83CC25;
+  --color-accent-rgb: 131, 204, 37;
 
   /* Spacing */
   --space-1: 4px;
