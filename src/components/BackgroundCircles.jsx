@@ -10,13 +10,20 @@ export default function BackgroundCircles() {
 
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight
-      const progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0
+      const rawProgress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0
+      const progress = Math.pow(rawProgress, 3) // faster color change
 
       // Move circles with page scroll (parallax-like)
       const y1 = window.scrollY * 0.25
       const y2 = window.scrollY * 0.4
       el.style.setProperty('--circle-offset', `${y1}px`)
       el.style.setProperty('--circle-2-offset', `${y2}px`)
+      
+      // Update circle opacity based on scroll progress
+      const baseOpacity = 0.25
+      const maxOpacity = 0.8
+      const opacity = baseOpacity + (maxOpacity - baseOpacity) * progress
+      el.style.setProperty('--circle-opacity', opacity.toString())
 
       const lerp = (a, b, t) => Math.round(a + (b - a) * t)
       const from = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim()

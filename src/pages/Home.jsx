@@ -16,7 +16,7 @@ export default function Home() {
               shipping product, design systems, and thoughtful interfaces.
             </div>
             <ul className="links">
-              <li className="resume"><a href="#contact">Resume</a></li>
+              <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2025.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer">Resume</a></li>
               <li className="contact"><a href="#projects-heading">Get in touch</a></li>
             </ul>
           </div>
@@ -31,12 +31,7 @@ export default function Home() {
             <Link to="/voteable" className="fullbleed-item">
               <img src={new URL('../assets/voteable_intro.png', import.meta.url).href} alt="Voteable" />
             </Link>
-            <Link to="/avocado_app" className="fullbleed-item">
-              <img src={new URL('../assets/voteable_screen.png', import.meta.url).href} alt="Avocado App" />
-            </Link>
-            <Link to="/tippit_tea" className="fullbleed-item">
-              <img src={new URL('../assets/Tippit TEA.png', import.meta.url).href} alt="Tippit Tea" />
-            </Link>
+
           </div>
         </div>
       </section>

@@ -9,10 +9,10 @@
 .bg-circles .circle {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.25;
+  opacity: var(--circle-opacity, 0.25);
   background: var(--circle-color, var(--color-accent));
   transform: translate(-50%, calc(-50% + var(--circle-offset, 0px)));
-  transition: background 160ms linear;
+  transition: background 160ms linear, opacity 160ms linear;
 }
 
 .bg-circles .circle-1 {
