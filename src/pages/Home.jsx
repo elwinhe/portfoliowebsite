@@ -20,9 +20,7 @@ export default function Home() {
               <li className="contact"><a href="#projects-heading">View Work</a></li>
             </ul>
           </div>
-          <div className="hero-img">
-            <img src={new URL('../assets/elwinhe_pfp_clean.png', import.meta.url).href} alt="Portrait of Elwin He" />
-          </div>
+          <img className="hero-img" src={new URL('../assets/elwinhe_pfp_clean.png', import.meta.url).href} alt="Portrait of Elwin He" />
         </div>
       </section>
 
