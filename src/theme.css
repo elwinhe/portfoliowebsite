@@ -4,6 +4,7 @@
   /* Colors */
   --color-background: #F1F0F2;
   --color-text: #0F0F0D;
+  --color-text-light: #6c6581;
   --color-secondary: #CCB81F;
   --color-primary: #5E25CC;
   --color-primary-light: #6b32da;
@@ -48,7 +49,7 @@
 @media (min-width: 768px) {
   :root {
     --text-h1: 40px; /* desktop hero */
-    --text-h2: 24px;
+    --text-h2: 28px;
     --text-h3: 20px;
   }
 }
@@ -73,15 +74,21 @@ body {
   font-variant-numeric: tabular-nums; /* monospaced digits */
 }
 
-h1, h2, h3 {
-  font-family: var(--font-serif);
-  font-weight: var(--font-weight-black);
+/* Title text styling */
+.title-text {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
   margin: 0 0 var(--space-4);
+  font-size: var(--text-h2);
 }
 
-h1 { font-size: var(--text-h1); }
-h2 { font-size: var(--text-h2); }
-h3 { font-size: var(--text-h3); }
+.title-text-thin {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-light);
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-h2);
+}
 
 p { font-size: var(--text-base); margin: 0 0 var(--space-4); }
 small, .caption { font-size: var(--text-sm); }

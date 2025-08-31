@@ -20,6 +20,17 @@
   }
 }
 
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Apply animations to elements */
 .home .home-content .text-1 {
   animation: fadeInUp 0.6s ease-out 0.1s both;
@@ -93,7 +104,7 @@
   font-family: var(--font-sans);
   font-weight: var(--font-weight-medium);
   font-size: clamp(16px, 4vw, 24px);
-  color: #6C7999;
+  color: var(--color-text-light);
   margin-top: 25px;
   transform: scaleY(1.05);
   opacity: 0; /* Start hidden for animation */
@@ -272,7 +283,7 @@
   /* Ensure fluid type below 815px */
   .home .home-content .text-1 { font-size: clamp(40px, 12vw, 144px); }
   .home .home-content .text-2 { font-size: clamp(20px, 6vw, 48px); }
-  .home .home-content .text-3 { font-size: clamp(20px, 3.6vw, 24px); }
+  .home .home-content .text-3 { font-size: clamp(20px, 3.6vw, 28px); }
   .home .links { margin: 0; padding: 20px 0; }
 }
 
@@ -282,9 +293,41 @@
   gap: var(--space-6);
 }
 
+/* Scroll hint (text + chevron stacked, smaller gap) */
+.scroll-hint{
+  text-align:center; color: var(--color-text-light);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-regular);
+  transition: opacity .35s ease, transform .35s ease;
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  transform: translateY(30px);
+}
+.scroll-hint.shown{ opacity: 1; transform: translateY(0); }
+
+.scroll-hint .label{ display:block; margin-bottom:px; font-size: var(--text-h3); }
+.scroll-hint .chev{ display:inline-block; }
+
+/* Motion (only chevron bounces; text can breathe softly) */
+@keyframes bounceY{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(8px) } }
+@keyframes breathe{ 0%,100%{ opacity:1 } 50%{ opacity:.85 } }
+.scroll-hint .chev{ animation: bounceY 1.8s ease-in-out infinite; }
+.scroll-hint .label.breathe{ animation: breathe 3.6s ease-in-out infinite; }
+
+/* Fade state - use higher specificity instead of !important */
+.scroll-hint.scroll-hint.is-hidden{ 
+  opacity:0; 
+  pointer-events:none; 
+  animation: none;
+}
+
+/* Sentinel sizing */
+#hintSentinel{ height:1px; }
+
 /* Add extra space above projects section */
 .section[aria-labelledby="projects-heading"] {
-  padding: calc(var(--space-10) * 1.5);
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-10);
 }
 
 .fullbleed-item {
@@ -305,7 +348,19 @@
 }
 
 /* ====== iPhone 15 style mockup (no images) ====== */
-.iphone{ width:min(272px, 73.6vw); margin-inline:auto; text-align:center; }
+.iphone{ 
+  width:min(272px, 73.6vw); 
+  margin-inline:auto; 
+  text-align:center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.iphone.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 .iphone-caption{ margin-top:8px; font-size:14px; color:#6b7280; }
 
 /* Outer titanium-like shell */
