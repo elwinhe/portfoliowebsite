@@ -42,14 +42,14 @@
   --text-sm: 14px;
   --text-base: 16px;
   --text-h3: 18px;
-  --text-h2: 22px;
+  --text-h2: 28px;
   --text-h1: 32px; /* mobile base */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 815px) {
   :root {
     --text-h1: 40px; /* desktop hero */
-    --text-h2: 28px;
+    --text-h2: 32px;
     --text-h3: 20px;
   }
 }

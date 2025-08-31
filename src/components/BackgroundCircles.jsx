@@ -11,7 +11,7 @@ export default function BackgroundCircles() {
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight
       const rawProgress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0
-      const progress = Math.pow(rawProgress, 3) // faster color change
+      const progress = Math.pow(rawProgress, 2.4) // faster color change
 
       // Move circles with page scroll (parallax-like)
       const y1 = window.scrollY * 0.25

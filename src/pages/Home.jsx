@@ -99,7 +99,11 @@ export default function Home() {
                 </video>
               </div>
 
-              <p className="iphone-caption">Voteable — SwiftUI feed (2s interaction loop)</p>
+              <div className="project-info">
+                <h3 className="project-title">Voteable</h3>
+                <p className="project-description">Political news aggregator, mobile app concept</p>
+                <a href="#" className="project-link">View case study →</a>
+              </div>
             </div>
 
           </div>

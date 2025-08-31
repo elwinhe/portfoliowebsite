@@ -23,7 +23,7 @@
 }
 
 .bg-circles .circle-2 {
-  top: 120vh;
+  top: 90vh;
   left: 80vw;
   width: 50vw;
   height: 50vw;
@@ -32,7 +32,7 @@
 
 @media (max-width: 767px) {
   .bg-circles .circle-1 { top: 25vh; left: 25vw; width: 70vw; height: 70vw; }
-  .bg-circles .circle-2 { top: 75vh; left: 85vw; width: 80vw; height: 80vw; }
+  .bg-circles .circle-2 { top: 85vh; left: 85vw; width: 60vw; height: 60vw; }
 }
 
 
