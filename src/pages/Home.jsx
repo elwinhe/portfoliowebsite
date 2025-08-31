@@ -13,7 +13,7 @@ export default function Home() {
             <div className="text-2">Product engineer & designer</div>
             <div className="text-3">
               From boba shops to SwiftUI apps — I turn ideas into systems. I enjoy
-              shipping product, design systems, and thoughtful interfaces.
+              shipping product, design systems, and thoughtful interfaces. Previously a software engineer intern at Zillow.
             </div>
             <ul className="links">
               <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2025.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer">Resume</a></li>
@@ -28,9 +28,29 @@ export default function Home() {
         <div className="container">
           <h2 id="projects-heading">Projects</h2>
           <div className="fullbleed-list">
-            <Link to="/voteable" className="fullbleed-item">
-              <img src={new URL('../assets/voteable_intro.png', import.meta.url).href} alt="Voteable" />
-            </Link>
+            <div className="iphone">
+              <div className="iphone-bezel">
+                {/* Notch */}
+                <div className="iphone-notch">
+                  <span className="notch-speaker"></span>
+                  <span className="notch-camera"></span>
+                </div>
+
+                {/* Screen (your loop) */}
+                <video
+                  className="iphone-screen"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster={new URL('../assets/voteable_intro.png', import.meta.url).href}>
+                  <source src={new URL('../assets/voteable_homepage_demo.webm', import.meta.url).href} type="video/webm" />
+                  <source src={new URL('../assets/voteable_homepage_demo.mp4', import.meta.url).href} type="video/mp4" />
+                </video>
+              </div>
+
+              <p className="iphone-caption">Voteable — SwiftUI feed (2s interaction loop)</p>
+            </div>
 
           </div>
         </div>

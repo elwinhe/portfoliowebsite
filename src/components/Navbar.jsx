@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <header className="nav-root">
-      <div className="container nav-bar">
+      <div className="container-wide nav-bar">
         <div className="brand">
           <Link to="/" onClick={closeMenu} className="brand-link">Elwin He</Link>
         </div>
