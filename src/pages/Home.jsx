@@ -116,12 +116,26 @@ export default function Home() {
       if (document.visibilityState === 'visible') {
         const video = voteableVideoRef.current;
         if (video) {
-          // This is a more forceful way to trigger a repaint on mobile browsers
-          // It briefly hides the video, forces the browser to recalculate layout, then shows it again.
-          video.style.display = 'none';
-          // Reading an offset property forces a reflow
+          // Reset video positioning and dimensions to force proper layout recalculation
+          const originalWidth = video.style.width;
+          const originalHeight = video.style.height;
+          const originalPosition = video.style.position;
+          
+          // Temporarily change dimensions to force layout recalculation
+          video.style.width = '99%';
+          video.style.height = '99%';
+          
+          // Force a reflow
           void video.offsetHeight;
-          video.style.display = 'block';
+          
+          // Restore original dimensions
+          video.style.width = originalWidth;
+          video.style.height = originalHeight;
+          video.style.position = originalPosition;
+          
+          // Ensure video is properly contained within its parent
+          video.style.objectFit = 'cover';
+          video.style.objectPosition = 'center';
           
           video.play().catch(error => {
             console.error("Video replay failed on visibility change:", error);
