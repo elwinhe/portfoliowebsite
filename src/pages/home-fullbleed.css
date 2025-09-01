@@ -524,7 +524,7 @@
 .iphone-bezel{
   position:relative;
   width:100%;
-  aspect-ratio:9/16.6;             /* iPhone-ish ratio */
+  aspect-ratio: 488 / 940;             /* Match asset ratio ~0.519 */
   border-radius:28px;               /* scaled down from 36px for smaller phone */
   background: linear-gradient(180deg,#0f1113,#1a1d21);
   box-shadow:
@@ -544,6 +544,7 @@
   border-radius: 18px;       /* scaled down from 24px to match bezel */
   display: block;
   object-fit: cover;         /* contain/cover depending on your video */
+  object-position: center;   /* ensure media is centered */
   background: var(--color-text);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
   position: relative;
