@@ -218,7 +218,7 @@ export default function Home() {
         <div className="container-wide hero">
           <div className="home-content">
             <div className="text-1">Hey, I'm Elwin</div>
-            <div className="text-2">Product Engineer & Designer</div>
+            <div className="text-2">Product Engineer & UX</div>
             <div className="text-3">
               From boba shops to mobile apps — I turn ideas into systems. Specializes in end-to-end execution and thoughtful interfaces. Former android engineer intern at Zillow, backend at Endeavor.ai.
             </div>
