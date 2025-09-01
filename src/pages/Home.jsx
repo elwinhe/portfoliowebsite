@@ -152,12 +152,12 @@ export default function Home() {
             <div className="text-1">Hey, I'm Elwin</div>
             <div className="text-2">Product engineer & designer</div>
             <div className="text-3">
-              From boba shops to SwiftUI apps — I turn ideas into systems. I enjoy
-              shipping product, design systems, and thoughtful interfaces. Previously a software engineer intern at Zillow.
+              From boba shops to mobile apps — I turn ideas into systems. I enjoy
+              shipping product, design systems, and thoughtful interfaces. Previously android engineer intern at Zillow.
             </div>
             <ul className="links">
-              <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2025.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer">Resume</a></li>
-              <li className="contact"><a href="#contact">Get in touch</a></li>
+              <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2025.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer" className="btn btn-solid">Resume</a></li>
+              <li className="contact"><a href="#contact" className="btn btn-outline">Get in touch</a></li>
             </ul>
           </div>
           <img className="hero-img" src={new URL('../assets/elwinhe_pfp_purp.png', import.meta.url).href} alt="Portrait of Elwin He" />
@@ -171,7 +171,7 @@ export default function Home() {
             <span className="label breathe" id="projects-heading">Scroll down for projects</span>
             <span className="chev">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </span>
           </p>
@@ -179,7 +179,7 @@ export default function Home() {
           {/* Sentinel: when this enters the viewport, hide the hint */}
           <div id="hintSentinel" aria-hidden="true"></div>
 
-          <div className="project-row" ref={projectRowRef}>
+          <div id="projects" className="project-row" ref={projectRowRef}>
             <div className="fullbleed-list">
               <div className="iphone">
                 <div className="iphone-bezel">
@@ -206,7 +206,7 @@ export default function Home() {
                     alt="Avocado"
                   />
                   <p className="project-description">Social media mobile app for food enthusiasts</p>
-                  <a href="#" className="project-link">View case study →</a>
+                  <a href="#" className="project-link">View case study</a>
                 </div>
               </div>
             </div>
@@ -239,7 +239,7 @@ export default function Home() {
                     alt="Voteable"
                   />
                   <p className="project-description">Political news aggregator, mobile app</p>
-                  <a href="#" className="project-link">View case study →</a>
+                  <a href="#" className="project-link">View case study</a>
                 </div>
               </div>
             </div>
@@ -304,6 +304,9 @@ export default function Home() {
             <div className="text-2">Co-founder & CEO</div>
             <div className="text-3">
             A boba shop that processed over 30,000 orders. I set up a robust supply chain and established a partnership with a local restaurant to keep operations lean, while also designing the brand and marketing materials that built a loyal customer base.
+            </div>
+            <div className="gallery-action">
+              <a href="#" className="btn btn-outline">View case study</a>
             </div>
           </div>
         </div>

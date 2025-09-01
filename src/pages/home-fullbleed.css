@@ -4,7 +4,6 @@
 .home-section {
   background: transparent;
   color: var(--color-text);
-  overflow: visible;
   font-family: var(--font-sans);
 }
 
@@ -72,7 +71,7 @@
   -webkit-filter: drop-shadow(0px 18px 40px rgba(var(--color-primary-rgb), 0.5));
   filter: drop-shadow(0px 18px 40px rgba(var(--color-primary-rgb), 0.5));
   width: 420px;
-  margin-left: 60px;
+  margin-left: 40px;
   object-fit: contain;
   overflow: visible;
   display: none;
@@ -115,38 +114,6 @@
   opacity: 0; /* Start hidden for animation */
 }
 .home .links li { list-style: none; display: block; margin: 20px 0; }
-.home .links .resume a {
-  display: inline-block;
-  border-radius: 100px;
-  color: #fff;
-  background: var(--color-primary);
-  font-size: 30px;
-  padding: 14px 66px;
-  transition: all 0.3s ease;
-}
-.home .links .contact a {
-  display: inline-block;
-  border-radius: 100px;
-  color: var(--color-primary);
-  background: var(--color-background);
-  font-size: 30px;
-  margin-left: 0;
-  padding: 12px 40px;
-  border: 3px solid var(--color-primary);
-  transition: all 0.3s ease, box-shadow 0.3s ease;
-}
-.home .home-content .links .resume a:hover {
-  color: #fff;
-  background: var(--color-primary-light);
-  filter: brightness(1.05);
-  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
-  padding: 14px 66px;
-}
-.home .home-content .links .contact a:hover {
-  color: var(--color-primary);
-  background: #fff;
-  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.25);
-}
 
 /* Responsive Media Queries */
 @media (min-width: 816px) {
@@ -163,8 +130,8 @@
     display: block;
     width: 400px;
   }
-  .home .links li { display: inline-block; margin-top: 75px; }
-  .home .links .contact a { margin-left: 40px; }
+  .home .links li { display: inline-block; margin-top: 40px; }
+  .home .links .contact { margin-left: 40px; }
 }
 
 @media (max-width: 1930px) {
@@ -184,45 +151,31 @@
 @media (max-width: 1420px) {
   .hero-img { width: 340px; }
   .home .home-content .text-1 { font-size: 84px; }
-  .home .links .contact a {
+  .home .links .contact {
     margin-left: 16px;
   }
 }
 
 @media (max-width: 1200px) {
   .container-wide { padding: 0 80px; }
+  .hero-img { width: 320px; }
   .home .home-content .text-1 { font-size: 76px; }
-  .home .links .resume a {
-    padding: 12px 60px;
-  }
-  .home .links .contact a {
-    padding: 12px 36px;
+  .home .links .contact {
     margin-left: 10px;
   }
-  .home .home-content .links .resume a:hover {
-    color: #fff;
-    background: var(--color-primary-light);
-    filter: brightness(1.05);
-    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
-    padding: 12px 60px;
+  .home .links a {
+    font-size: 28px !important;
+    padding: 12px 48px !important;
+  }
+  .home .links .btn-outline {
+    padding: 12px 48px !important;
   }
 }
 
 @media (max-width: 1100px) {
   .container-wide { padding: 0 60px; }
-  .home .links .resume a {
-    padding: 12px 48px;
-  }
-  .home .links .contact a {
-    padding: 12px 28px;
+  .home .links .contact {
     margin-left: 10px;
-  }
-  .home .home-content .links .resume a:hover {
-    color: #fff;
-    background: var(--color-primary-light);
-    filter: brightness(1.05);
-    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
-    padding: 12px 48px;
   }
 }
 
@@ -231,19 +184,12 @@
   .hero-img { width: 300px; margin-left: 40px; }
   .home .home-content .text-1 { font-size: 72px; }
   .home .home-content .text-2 { font-size: 36px; }
-  .home .links .resume a {
-    padding: 12px 44px;
+  .home .links a {
+    font-size: 24px !important;
+    padding: 12px 40px !important;
   }
-  .home .links .contact a {
-    padding: 12px 26px;
-    margin-left: 10px;
-  }
-  .home .home-content .links .resume a:hover {
-    color: #fff;
-    background: var(--color-primary-light);
-    filter: brightness(1.05);
-    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
-    padding: 12px 44px;
+  .home .links .btn-outline {
+    padding: 12px 40px !important;
   }
 }
 
@@ -252,40 +198,79 @@
   .home .home-content .text-1 { font-size: 64px; }
   .home .home-content .text-2 { font-size: 32px; }
   .home .home-content .text-3 { font-size: 20px; }
-  .home .links .resume a {
-    font-size: 24px;
-    padding: 12px 44px;
-  }
-  .home .links .contact a {
-    font-size: 24px;
-    padding: 12px 26px;
+  .home .links .contact {
     margin-left: 10px;
   }
 
 }
 
 @media (max-width: 815px) {
-  .home .links .resume a,
-  .home .links .contact a {
+  .home .links a {
     font-size: clamp(20px, 6vw, 28px);
     padding: 14px 0;
     width: 96%;
-    text-align: center;
-    margin-left: 0px;
   }
-  .home .home-content .links .resume a:hover {
-    color: #fff;
-    background: var(--color-primary-light);
-    filter: brightness(1.05);
-    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
-    padding: 14px 0;
+  .home .links .btn-outline {
+    padding: 12px 0; /* Adjust for border */
   }
+  .home .links .contact { margin-left: 0; }
+
   /* Ensure fluid type below 815px */
   .home .home-content .text-1 { font-size: clamp(40px, 12vw, 144px); }
   .home .home-content .text-2 { font-size: clamp(20px, 6vw, 48px); }
   .home .home-content .text-3 { font-size: clamp(20px, 3.6vw, 28px); }
   .home .links { margin: 0; padding: 20px 0; }
 }
+
+/* === Reusable Button Styles === */
+.btn {
+  display: inline-block;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  border: 2px solid transparent; /* Base border for consistent sizing */
+}
+
+.btn-solid {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-solid:hover {
+  background: var(--color-primary-light);
+  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
+  color: #fff;
+}
+
+.btn-outline {
+  color: var(--color-primary);
+  background: transparent;
+  border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  color: var(--color-primary);
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.25);
+}
+
+/* === Button Sizing === */
+/* Hero Buttons */
+.home .links a {
+  font-size: 30px;
+  padding: 14px 66px;
+}
+.home .links .btn-outline {
+  padding: 12px 64px; /* Adjust for border */
+}
+/* Gallery Button */
+.gallery-action .btn-outline {
+  font-size: clamp(16px, 3vw, 20px);
+  padding: 10px 32px;
+}
+
 
 /* === PROJECT LIST STYLES === */
 .fullbleed-list {
@@ -312,9 +297,8 @@
   display: flex;
   justify-content: space-between;
   text-align: left;
-  align-items: stretch;
+  align-items: center; /* Vertically center content */
   gap: var(--space-10);
-  flex-direction: column;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -334,6 +318,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1; /* Occupy half the space, accounting for gap */
+  min-width: 0; /* Prevent overflow issues */
 }
 
 @media (min-width: 1000px) {
@@ -371,8 +357,9 @@
 }
 
 .gallery-content {
-  width: 100%;
-  flex-shrink: 0;
+  flex: 1; /* Occupy half the space, accounting for gap */
+  min-width: 0; /* Prevent overflow issues */
+  padding-right: 40px; /* Add right padding for desktop view */
 }
 
 .gallery-content .text-1 {
@@ -400,19 +387,24 @@
   color: var(--color-text-light);
 }
 
+.gallery-action {
+  margin-top: var(--space-6);
+}
+
 /* Responsive Media Queries for Gallery */
-@media (min-width: 816px) {
+/* Stack on smaller screens */
+@media (max-width: 815px) {
   .gallery-hero {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
   }
-  .gallery-container { 
-    width: 50%; 
+  .gallery-container,
+  .gallery-content {
+    width: 100%;
+    flex: initial; /* Reset flex behavior */
   }
-  .gallery-content { 
-    width: 50%; 
+  .gallery-content {
+    padding-right: 0; /* Remove extra padding on mobile */
   }
 }
 
@@ -515,11 +507,16 @@
   font-size: 20px;
   color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  display: inline-block; /* Required for transform */
+  transform: translateY(0);
+  text-shadow: 0 0 0 rgba(var(--color-primary-rgb), 0);
+  transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
 }
 
 .project-link:hover {
   color: var(--color-primary-light);
+  text-shadow: 0 0 16px rgba(var(--color-primary-rgb), 0.25);
+  transform: translateY(-2px); /* A more subtle lift */
 }
 
 /* Outer titanium-like shell */
@@ -707,6 +704,7 @@
   font-size: clamp(14px, 2.5vw, 18px); background:#FAFAFB;
   font-family: var(--font-sans);
   color: var(--color-text);
+  resize: none;
 }
 .contact-form .btn-primary{
   grid-column: 1 / -1;

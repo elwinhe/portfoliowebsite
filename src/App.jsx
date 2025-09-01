@@ -10,12 +10,14 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tippit_tea" element={<TippitTea />} />
-        <Route path="/voteable" element={<Voteable />} />
-        <Route path="/avocado_app" element={<AvocadoApp />} />
-      </Routes>
+      <main className="content-wrap">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tippit_tea" element={<TippitTea />} />
+          <Route path="/voteable" element={<Voteable />} />
+          <Route path="/avocado_app" element={<AvocadoApp />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   )
 }

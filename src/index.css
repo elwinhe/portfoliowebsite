@@ -1,2 +1,6 @@
 /* Intentionally minimal; app uses theme.css */
 /* Keep this file to preserve Vite entry import. */
+
+.content-wrap {
+  padding-top: 60px; /* Match navbar height */
+}
