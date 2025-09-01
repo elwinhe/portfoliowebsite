@@ -564,7 +564,16 @@
 
 @media (max-width: 815px){
   .iphone-bezel{
-    aspect-ratio: 488 / 940; /* ensure consistent ratio on phones */
+    aspect-ratio: 488 / 936; /* shorter bezel for mobile */
+  }
+  
+  .iphone-screen{
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;    /* fit vertically inside the screen */
+    object-position: center;
+    background: #fff;       /* white background for mobile */
   }
 }
 
