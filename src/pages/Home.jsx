@@ -1,6 +1,6 @@
 import BackgroundCircles from '../components/BackgroundCircles'
 import { Link } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './home-fullbleed.css'
 
 export default function Home() {
@@ -10,6 +10,7 @@ export default function Home() {
   const projectRowRef = useRef(null);
   const experienceRef = useRef(null);
   const contactRef = useRef(null);
+  const [formState, setFormState] = useState({ submitting: false, succeeded: false, error: null });
 
   useEffect(() => {
     // iPhone visibility is controlled with the hint sentinel below
@@ -142,6 +143,33 @@ export default function Home() {
     io.observe(sentinel);
     return () => io.disconnect();
   }, []);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setFormState({ submitting: true, succeeded: false, error: null });
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        if (response.ok) {
+            setFormState({ submitting: false, succeeded: true, error: null });
+            form.reset();
+        } else {
+            const responseData = await response.json();
+            const errorMessage = responseData.errors ? responseData.errors.map(error => error.message).join(", ") : "Oops! There was a problem submitting your form";
+            setFormState({ submitting: false, succeeded: false, error: errorMessage });
+        }
+    } catch (error) {
+        setFormState({ submitting: false, succeeded: false, error: "Oops! There was a problem submitting your form" });
+    }
+  };
 
   return (
     <main style={{ position: 'relative', zIndex: 1 }}>
@@ -373,34 +401,44 @@ export default function Home() {
       <section className="section contact" id="contact" ref={contactRef}>
         <h2 className="section-title">Let’s build together</h2>
         <p className="contact-sub">Open to iOS/Android, product engineering, and scrappy builder roles.</p>
-
-        <form className="contact-form" action="https://formspree.io/f/your-id" method="POST">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" required></input>
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" required></input>
-          </label>
-          <label className="full">
-            <span>Message</span>
-            <textarea name="message" rows="5" required></textarea>
-          </label>
-
-          <div className="form-footer">
-            <button type="submit" className="btn-primary">Send</button>
-
-            <div className="social-links">
-              <a href="https://instagram.com/elwin.he" target="_blank" rel="noreferrer">
-                <img src={new URL('../assets/instagram.webp', import.meta.url).href} alt="Instagram" />
-              </a>
-              <a href="https://linkedin.com/in/elwinhe" target="_blank" rel="noreferrer">
-                <img src={new URL('../assets/linkedin.webp', import.meta.url).href} alt="LinkedIn" />
-              </a>
-            </div>
+        
+        {formState.succeeded ? (
+          <div className="form-success">
+            <h3>Thanks for reaching out!</h3>
+            <p>I'll get back to you soon.</p>
           </div>
-        </form>
+        ) : (
+          <form className="contact-form" action="https://formspree.io/f/xpwjldgo" onSubmit={handleFormSubmit}>
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" required></input>
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" required></input>
+            </label>
+            <label className="full">
+              <span>Message</span>
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+
+            <div className="form-footer">
+              <button type="submit" className="btn-primary" disabled={formState.submitting}>
+                {formState.submitting ? 'Sending...' : 'Send'}
+              </button>
+
+              <div className="social-links">
+                <a href="https://instagram.com/elwin.he" target="_blank" rel="noreferrer">
+                  <img src={new URL('../assets/instagram.webp', import.meta.url).href} alt="Instagram" />
+                </a>
+                <a href="https://linkedin.com/in/elwinhe" target="_blank" rel="noreferrer">
+                  <img src={new URL('../assets/linkedin.webp', import.meta.url).href} alt="LinkedIn" />
+                </a>
+              </div>
+            </div>
+            {formState.error && <p className="form-error">{formState.error}</p>}
+          </form>
+        )}
       </section>
 
       <footer className="site-footer">
