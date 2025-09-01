@@ -8,6 +8,7 @@ export default function Home() {
   const hintRef = useRef(null);
   const carouselRef = useRef(null);
   const galleryRef = useRef(null);
+  const secondAppRef = useRef(null);
 
   useEffect(() => {
     // iPhone visibility is controlled with the hint sentinel below
@@ -48,6 +49,7 @@ export default function Home() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           gallery.classList.add('visible');
+          io.disconnect();
         }
       });
     }, {
@@ -57,6 +59,31 @@ export default function Home() {
     });
 
     io.observe(gallery);
+    return () => io.disconnect();
+  }, []);
+
+  // Second app demo fade-in on scroll
+  useEffect(() => {
+    const secondAppSection = secondAppRef.current;
+    if (!secondAppSection) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const iphoneElement = secondAppSection.querySelector('.iphone');
+          if (iphoneElement) {
+            iphoneElement.classList.add('visible');
+          }
+          io.disconnect();
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
+    });
+
+    io.observe(secondAppSection);
     return () => io.disconnect();
   }, []);
 
@@ -71,13 +98,16 @@ export default function Home() {
     requestAnimationFrame(() => hint.classList.add('shown'));
 
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
           hint.classList.add('is-hidden');
           // Trigger iPhone fade-in at the same scroll point
           if (iphoneEl) iphoneEl.classList.add('visible');
         } else {
-          hint.classList.remove('is-hidden');
+          // Only show the hint if the sentinel is below the viewport (scrolled up)
+          if (entry.boundingClientRect.top > 0) {
+            hint.classList.remove('is-hidden');
+          }
         }
       });
     }, {
@@ -228,11 +258,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="projects-heading">
+      <section className="section" aria-labelledby="avocado-heading" ref={secondAppRef}>
         <div className="container-wide">
           <div className="fullbleed-list">
             <div className="iphone">
-              <div className="iphone-bezel">
+              <div className="iphone-bezel-smaller">
                 {/* Notch */}
                 <div className="iphone-notch">
                   <span className="notch-speaker"></span>
@@ -240,22 +270,19 @@ export default function Home() {
                 </div>
 
                 {/* Screen (your loop) */}
-                <video
+                <img
                   className="iphone-screen"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  poster={new URL('../assets/avocado_intro.png', import.meta.url).href}>
-                  <source src={new URL('../assets/avocado_demo.webm', import.meta.url).href} type="video/webm" />
-                  <source src={new URL('../assets/avocado_demo.mp4', import.meta.url).href} type="video/mp4" />
-                </video>
+                  src={new URL('../assets/avocado_demo.jpg', import.meta.url).href}
+                  alt="Avocado App Screenshot"
+                  loading="lazy"
+                />
               </div>
 
               <div className="project-info">
                 <img 
                   className="project-title" 
-                  src={new URL('../assets/avocado_wordmark.png', import.meta.url).href}
+                  id="avocado-heading"
+                  src={new URL('../assets/avocado_logo.png', import.meta.url).href}
                   alt="Avocado"
                   style={{ 
                     height: 'auto',
@@ -263,7 +290,7 @@ export default function Home() {
                     width: 'auto'
                   }}
                 />
-                <p className="project-description">Food delivery app for healthy meals</p>
+                <p className="project-description">Social media mobile app for food enthusiasts</p>
                 <a href="#" className="project-link">View case study →</a>
               </div>
             </div>
