@@ -524,7 +524,7 @@
 .iphone-bezel{
   position:relative;
   width:100%;
-  aspect-ratio: 488 / 940;             /* Match asset ratio ~0.519 */
+  aspect-ratio: 488 / 910;             /* Match asset ratio ~0.519 */
   border-radius:28px;               /* scaled down from 36px for smaller phone */
   background: linear-gradient(180deg,#0f1113,#1a1d21);
   box-shadow:
