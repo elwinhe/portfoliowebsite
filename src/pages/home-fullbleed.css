@@ -552,6 +552,16 @@
   left: 0;
 }
 
+@media (max-width: 815px){
+  .iphone-screen{
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;    /* fit vertically inside the screen */
+    object-position: center;
+  }
+}
+
 /* === Dynamic Island (flat black style) === */
 .iphone-notch {
   position: absolute;
