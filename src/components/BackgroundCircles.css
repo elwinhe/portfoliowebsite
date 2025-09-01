@@ -23,16 +23,26 @@
 }
 
 .bg-circles .circle-2 {
-  top: 90vh;
+  top: 110vh;
   left: 80vw;
-  width: 50vw;
-  height: 50vw;
+  width: 56vw;
+  height: 56vw;
   transform: translate(-50%, calc(-50% + var(--circle-2-offset, 0px)));
 }
 
+.bg-circles .circle-3 {
+  top: 240vh;
+  left: 12vw;
+  width: 32vw;
+  height: 32vw;
+  transform: translate(-50%, calc(-50% + var(--circle-3-offset, 0px)));
+}
+
+
 @media (max-width: 767px) {
   .bg-circles .circle-1 { top: 25vh; left: 25vw; width: 70vw; height: 70vw; }
-  .bg-circles .circle-2 { top: 85vh; left: 85vw; width: 60vw; height: 60vw; }
+  .bg-circles .circle-2 { top: 120vh; left: 85vw; width: 60vw; height: 60vw; } 
+  .bg-circles .circle-3 { top: 280vh; left: 12vw; width: 56vw; height: 56vw; }
 }
 
 

@@ -11,18 +11,26 @@ export default function BackgroundCircles() {
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight
       const rawProgress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0
-      const progress = Math.pow(rawProgress, 2.4) // faster color change
+      
+      // Use full scroll range for opacity
+      const opacityProgress = Math.pow(rawProgress / 0.5, 2.4)
+
+      // Complete color transition by 25% of the page scroll
+      const colorProgress = Math.min(1, rawProgress / 0.3)
 
       // Move circles with page scroll (parallax-like)
-      const y1 = window.scrollY * 0.25
-      const y2 = window.scrollY * 0.4
+      const y1 = window.scrollY * -0.2; // Negative value to move up
+      const y2 = window.scrollY * -0.3; // Different speed for parallax
+      const y3 = window.scrollY * -0.4; // Different speed for parallax
+
       el.style.setProperty('--circle-offset', `${y1}px`)
       el.style.setProperty('--circle-2-offset', `${y2}px`)
+      el.style.setProperty('--circle-3-offset', `${y3}px`)
       
       // Update circle opacity based on scroll progress
       const baseOpacity = 0.25
-      const maxOpacity = 0.8
-      const opacity = baseOpacity + (maxOpacity - baseOpacity) * progress
+      const maxOpacity = 0.6
+      const opacity = baseOpacity + (maxOpacity - baseOpacity) * opacityProgress
       el.style.setProperty('--circle-opacity', opacity.toString())
 
       const lerp = (a, b, t) => Math.round(a + (b - a) * t)
@@ -41,9 +49,9 @@ export default function BackgroundCircles() {
         const c1 = hexToRgb(from)
         const c2 = hexToRgb(to)
         const mix = {
-          r: lerp(c1.r, c2.r, progress),
-          g: lerp(c1.g, c2.g, progress),
-          b: lerp(c1.b, c2.b, progress),
+          r: lerp(c1.r, c2.r, colorProgress),
+          g: lerp(c1.g, c2.g, colorProgress),
+          b: lerp(c1.b, c2.b, colorProgress),
         }
         el.style.setProperty('--circle-color', rgbToCss(mix))
       } catch (e) {
@@ -60,6 +68,7 @@ export default function BackgroundCircles() {
     <div ref={rootRef} className="bg-circles" aria-hidden="true">
       <div className="circle circle-1" />
       <div className="circle circle-2" />
+      <div className="circle circle-3" />
     </div>
   )
 }
