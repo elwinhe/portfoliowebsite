@@ -564,7 +564,7 @@
 
 @media (max-width: 815px){
   .iphone-bezel{
-    aspect-ratio: 488 / 936; /* shorter bezel for mobile */
+    aspect-ratio: 488 / 900; /* shorter bezel for mobile */
   }
   
   .iphone-screen{
