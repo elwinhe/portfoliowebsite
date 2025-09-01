@@ -238,10 +238,11 @@
   color: #fff;
 }
 
-.btn-solid:hover {
+.btn-solid:hover, .btn-primary:hover {
   background: var(--color-primary-light);
   box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
   color: #fff;
+  filter: brightness(1.05); /* Added for consistency */
 }
 
 .btn-outline {

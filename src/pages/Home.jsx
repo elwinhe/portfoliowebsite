@@ -179,10 +179,9 @@ export default function Home() {
         <div className="container-wide hero">
           <div className="home-content">
             <div className="text-1">Hey, I'm Elwin</div>
-            <div className="text-2">Product engineer & designer</div>
+            <div className="text-2">Product Engineer & Designer</div>
             <div className="text-3">
-              From boba shops to mobile apps — I turn ideas into systems. I enjoy
-              shipping product, design systems, and thoughtful interfaces. Previously android engineer intern at Zillow.
+              From boba shops to mobile apps — I turn ideas into systems. Specializes in end-to-end execution and thoughtful interfaces. Former android engineer intern at Zillow, backend at Endeavor.ai.
             </div>
             <ul className="links">
               <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2025.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer" className="btn btn-solid">Resume</a></li>
@@ -235,7 +234,7 @@ export default function Home() {
                     alt="Avocado"
                   />
                   <p className="project-description">Social media mobile app for food enthusiasts</p>
-                  <a href="#" className="project-link">View case study</a>
+                  <a href="https://www.notion.so/Avocado-App-261d4d1bf5f180b9a796e50039139f95?source=copy_link"target="_blank" rel="noopener noreferrer" className="project-link">View case study</a>
                 </div>
               </div>
             </div>
@@ -268,7 +267,7 @@ export default function Home() {
                     alt="Voteable"
                   />
                   <p className="project-description">Political news aggregator, mobile app</p>
-                  <a href="#" className="project-link">View case study</a>
+                  <a href="https://www.notion.so/Voteable-261d4d1bf5f180baadf1eaa3650b43d7?source=copy_link" target="_blank" rel="noopener noreferrer" className="project-link">View case study</a>
                 </div>
               </div>
             </div>
@@ -329,13 +328,13 @@ export default function Home() {
             </div>
           </div>
           <div className="gallery-content">
-            <div className="text-1">Tippit Tea (2022)</div>
+            <div className="text-1">Tippit Tea</div>
             <div className="text-2">Co-founder & CEO</div>
             <div className="text-3">
             A boba shop that processed over 30,000 orders. I set up a robust supply chain and established a partnership with a local restaurant to keep operations lean, while also designing the brand and marketing materials that built a loyal customer base.
             </div>
             <div className="gallery-action">
-              <a href="#" className="btn btn-outline">View case study</a>
+              <a href="/tippittea" className="btn btn-outline">View case study</a>
             </div>
           </div>
         </div>
@@ -401,7 +400,7 @@ export default function Home() {
 
       <section className="section contact" id="contact" ref={contactRef}>
         <h2 className="section-title">Let’s build together</h2>
-        <p className="contact-sub">Open to iOS/Android, product engineering, and scrappy builder roles.</p>
+        <p className="contact-sub">Open to iOS/Android, product engineering, UX, and scrappy dev roles.</p>
         
         {formState.succeeded ? (
           <div className="form-success">
