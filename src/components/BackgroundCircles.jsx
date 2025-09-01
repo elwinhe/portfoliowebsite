@@ -16,12 +16,12 @@ export default function BackgroundCircles() {
       const opacityProgress = Math.pow(rawProgress / 0.5, 2.4)
 
       // Complete color transition by 25% of the page scroll
-      const colorProgress = Math.min(1, rawProgress / 0.3)
+      const colorProgress = Math.min(1, rawProgress / 0.35)
 
       // Move circles with page scroll (parallax-like)
       const y1 = window.scrollY * -0.2; // Negative value to move up
-      const y2 = window.scrollY * -0.3; // Different speed for parallax
-      const y3 = window.scrollY * -0.4; // Different speed for parallax
+      const y2 = window.scrollY * -0.25; // Different speed for parallax
+      const y3 = window.scrollY * -0.3; // Different speed for parallax
 
       el.style.setProperty('--circle-offset', `${y1}px`)
       el.style.setProperty('--circle-2-offset', `${y2}px`)
