@@ -6,9 +6,58 @@ import './home-fullbleed.css'
 export default function Home() {
   const iphoneRef = useRef(null);
   const hintRef = useRef(null);
+  const carouselRef = useRef(null);
+  const galleryRef = useRef(null);
 
   useEffect(() => {
     // iPhone visibility is controlled with the hint sentinel below
+  }, []);
+
+  // Image carousel functionality
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const images = carousel.querySelectorAll('.carousel-image');
+    let currentIndex = 0;
+
+    const cycleImages = () => {
+      // Remove active class from all images
+      images.forEach(img => img.classList.remove('active'));
+      
+      // Add active class to current image
+      images[currentIndex].classList.add('active');
+      
+      // Move to next image
+      currentIndex = (currentIndex + 1) % images.length;
+    };
+
+    // Start the carousel
+    const interval = setInterval(cycleImages, 2380);
+
+    // Cleanup on unmount
+    return () => clearInterval(interval);
+  }, []);
+
+  // Gallery fade-in animation
+  useEffect(() => {
+    const gallery = galleryRef.current;
+    if (!gallery) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          gallery.classList.add('visible');
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
+    });
+
+    io.observe(gallery);
+    return () => io.disconnect();
   }, []);
 
   // Show scroll-hint on load; fade it out when sentinel enters
@@ -111,6 +160,110 @@ export default function Home() {
                   }}
                 />
                 <p className="project-description">Political news aggregator, mobile app concept</p>
+                <a href="#" className="project-link">View case study →</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="gallery-heading">
+        <div className="container-wide gallery-hero" ref={galleryRef}>
+          <div className="gallery-container">
+            <div className="image-carousel" ref={carouselRef}>
+              <picture className="carousel-image active">
+                <source 
+                  media="(min-width: 1000px)" 
+                  srcSet={new URL('../assets/tippittea/matcha_blueberry_web.jpg', import.meta.url).href}
+                />
+                <img 
+                  src={new URL('../assets/tippittea/matcha_blueberry_mobile.jpg', import.meta.url).href}
+                  alt="Tippit Tea - Image 1"
+                  loading="lazy"
+                />
+              </picture>
+              <picture className="carousel-image">
+                <source 
+                  media="(min-width: 1000px)" 
+                  srcSet={new URL('../assets/tippittea/tippittea_crossed_web.jpg', import.meta.url).href}
+                />
+                <img 
+                  src={new URL('../assets/tippittea/tippittea_crossed_mobile.jpg', import.meta.url).href}
+                  alt="Tippit Tea - Image 2"
+                  loading="lazy"
+                />
+              </picture>
+              <picture className="carousel-image">
+                <source 
+                  media="(min-width: 1000px)" 
+                  srcSet={new URL('../assets/tippittea/customers.jpg', import.meta.url).href}
+                />
+                <img 
+                  src={new URL('../assets/tippittea/customers_mobile.jpg', import.meta.url).href}
+                  alt="Tippit Tea - Image 3"
+                  loading="lazy"
+                />
+              </picture>
+              <picture className="carousel-image">
+                <source 
+                  media="(min-width: 1000px)" 
+                  srcSet={new URL('../assets/tippittea/brown_sugar_panda.png', import.meta.url).href}
+                />
+                <img 
+                  src={new URL('../assets/tippittea/brown_sugar_mobile.png', import.meta.url).href}
+                  alt="Tippit Tea - Image 4"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+          </div>
+          <div className="gallery-content">
+            <div className="text-1">Tippit Tea (2022)</div>
+            <div className="text-2">Co-founder & CEO</div>
+            <div className="text-3">
+            A boba shop that processed over 30,000 orders. I set up a robust supply chain and established a partnership with a local restaurant to keep operations lean, while also designing the brand and marketing materials that built a loyal customer base.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="projects-heading">
+        <div className="container-wide">
+          <div className="fullbleed-list">
+            <div className="iphone">
+              <div className="iphone-bezel">
+                {/* Notch */}
+                <div className="iphone-notch">
+                  <span className="notch-speaker"></span>
+                  <span className="notch-camera"></span>
+                </div>
+
+                {/* Screen (your loop) */}
+                <video
+                  className="iphone-screen"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster={new URL('../assets/avocado_intro.png', import.meta.url).href}>
+                  <source src={new URL('../assets/avocado_demo.webm', import.meta.url).href} type="video/webm" />
+                  <source src={new URL('../assets/avocado_demo.mp4', import.meta.url).href} type="video/mp4" />
+                </video>
+              </div>
+
+              <div className="project-info">
+                <img 
+                  className="project-title" 
+                  src={new URL('../assets/avocado_wordmark.png', import.meta.url).href}
+                  alt="Avocado"
+                  style={{ 
+                    height: 'auto',
+                    maxWidth: '100%',
+                    width: 'auto'
+                  }}
+                />
+                <p className="project-description">Food delivery app for healthy meals</p>
                 <a href="#" className="project-link">View case study →</a>
               </div>
             </div>

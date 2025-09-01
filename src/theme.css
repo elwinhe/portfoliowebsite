@@ -71,7 +71,6 @@ body {
   font-family: var(--font-sans);
   font-weight: var(--font-weight-regular);
   line-height: 1.6;
-  font-variant-numeric: tabular-nums; /* monospaced digits */
 }
 
 /* Title text styling */
