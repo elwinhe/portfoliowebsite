@@ -8,6 +8,8 @@ export default function Home() {
   const carouselRef = useRef(null);
   const galleryRef = useRef(null);
   const projectRowRef = useRef(null);
+  const experienceRef = useRef(null);
+  const contactRef = useRef(null);
 
   useEffect(() => {
     // iPhone visibility is controlled with the hint sentinel below
@@ -58,6 +60,50 @@ export default function Home() {
     });
 
     io.observe(gallery);
+    return () => io.disconnect();
+  }, []);
+
+  // Experience section fade-in animation
+  useEffect(() => {
+    const experienceSection = experienceRef.current;
+    if (!experienceSection) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          experienceSection.classList.add('visible');
+          io.disconnect();
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
+    });
+
+    io.observe(experienceSection);
+    return () => io.disconnect();
+  }, []);
+
+  // Contact form fade-in animation
+  useEffect(() => {
+    const contactSection = contactRef.current;
+    if (!contactSection) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          contactSection.classList.add('visible');
+          io.disconnect();
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
+    });
+
+    io.observe(contactSection);
     return () => io.disconnect();
   }, []);
 
@@ -192,7 +238,7 @@ export default function Home() {
                     src={new URL('../assets/voteable_wordmark.png', import.meta.url).href}
                     alt="Voteable"
                   />
-                  <p className="project-description">Political news aggregator, mobile app concept</p>
+                  <p className="project-description">Political news aggregator, mobile app</p>
                   <a href="#" className="project-link">View case study →</a>
                 </div>
               </div>
@@ -200,6 +246,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <hr className="section-divider"/>
 
       <section className="section" aria-labelledby="gallery-heading">
         <div className="container-wide gallery-hero" ref={galleryRef}>
@@ -261,12 +309,103 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="section" aria-labelledby="contact-heading">
-        <div className="container">
-          <div className="title-text" id="contact-heading">Contact</div>
-          <p>Let’s connect. Email: <a href="mailto:hello@elwinhe.com">hello@elwinhe.com</a></p>
-        </div>
+      <hr className="section-divider"/>
+
+      <section className="section experience" id="experience" ref={experienceRef}>
+        <h2 className="section-title">Experience</h2>
+        <article className="exp-card">
+          <img
+            className="exp-logo"
+            aria-hidden="true"
+            src={new URL('../assets/endv_logo.png', import.meta.url).href}
+            alt="Endeavor"
+            loading="lazy"
+          />
+          <div className="exp-body">
+            <header className="exp-head">
+              <h3 className="exp-role">Software Engineer — Backend</h3>
+              <div className="exp-meta">Endeavor · 2025 · San Francisco, CA</div>
+            </header>
+
+            <ul className="exp-points">
+              <li>Architected a distributed email-processing pipeline that turned Outlook messages into structured tasks with multi-tenant filtering for scalable client integrations.</li>
+              <li>Improved performance by cutting database load 50%+ with a write-through Redis cache for timestamp lookups.</li>
+              <li>Shipped production features by containerizing services on AWS EKS and collaborating with product/ops in rapid sprints.</li>
+            </ul>
+
+            <div className="exp-tags">
+              <span>Python</span><span>FastAPI</span><span>Redis</span><span>Postgres</span><span>Docker CI/CD</span><span>AWS</span><span>Kubernetes</span>
+            </div>
+          </div>
+        </article>
+        <article className="exp-card">
+          <img
+            className="exp-logo"
+            aria-hidden="true"
+            src={new URL('../assets/zillow_logo.png', import.meta.url).href}
+            alt="Zillow"
+            loading="lazy"
+          />
+          <div className="exp-body">
+            <header className="exp-head">
+              <h3 className="exp-role">Software Engineering Intern — Android</h3>
+              <div className="exp-meta">Zillow · Summer 2023 · Seattle, WA</div>
+            </header>
+
+            <ul className="exp-points">
+              <li>Migrated legacy XML layouts to Jetpack Compose, and supported KMM modules for cross-platform features.</li>
+              <li>Built dynamic in-app modals with Firebase Remote Config + JSON schema for faster product launches.</li>
+              <li>Shipped a GPT-powered lead-reply hackathon project that auto-generated 1,000+ agent responses in its first week.</li>
+            </ul>
+
+            <div className="exp-tags">
+              <span>Kotlin</span><span>Compose</span><span>Android SDK</span><span>Gradle</span><span>GitLab CI/CD</span><span>Firebase</span>
+            </div>
+          </div>
+        </article>
       </section>
+
+      <hr className="section-divider"/>
+
+      <section className="section contact" id="contact" ref={contactRef}>
+        <h2 className="section-title">Let’s build together</h2>
+        <p className="contact-sub">Open to iOS/Android, product engineering, and scrappy builder roles.</p>
+
+        <form className="contact-form" action="https://formspree.io/f/your-id" method="POST">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" required></input>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required></input>
+          </label>
+          <label className="full">
+            <span>Message</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+
+          <div className="form-footer">
+            <button type="submit" className="btn-primary">Send</button>
+
+            <div className="social-links">
+              <a href="https://instagram.com/elwin.he" target="_blank" rel="noreferrer">
+                <img src={new URL('../assets/instagram.webp', import.meta.url).href} alt="Instagram" />
+              </a>
+              <a href="https://linkedin.com/in/elwinhe" target="_blank" rel="noreferrer">
+                <img src={new URL('../assets/linkedin.webp', import.meta.url).href} alt="LinkedIn" />
+              </a>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <footer className="site-footer">
+        <div className="container">
+          <a href="mailto:elwinhe@proton.me">elwinhe@proton.me</a>
+          <p>© 2025 Elwin He</p>
+        </div>
+      </footer>
     </main>
   )
 }

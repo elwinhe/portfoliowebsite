@@ -4,7 +4,9 @@
   /* Colors */
   --color-background: #F1F0F2;
   --color-text: #0e0f0d;
+  --color-text-rgb: 14, 15, 13;
   --color-text-light: #6c6581;
+  --color-text-gray: #6b7280;
   --color-secondary: #CCB81F;
   --color-primary: #5E25CC;
   --color-primary-light: #6b32da;
@@ -40,17 +42,21 @@
   /* Font sizes (4pt scale) */
   --text-xs: 12px;
   --text-sm: 14px;
-  --text-base: 16px;
-  --text-h3: 24px;
-  --text-h2: 28px;
-  --text-h1: 32px; /* mobile base */
+  --text-base: 14px;
+ /* mobile base */
+
+  --text-h1: 26px; /* desktop hero */
+  --text-h2: 22px;
+  --text-h3: 18px;
+  --text-base: 14px;
 }
 
 @media (min-width: 815px) {
   :root {
-    --text-h1: 28px; /* desktop hero */
-    --text-h2: 26px;
-    --text-h3: 24px;
+    --text-h3: 18px;
+    --text-h2: 24px;
+    --text-h1: 32px;
+    --text-base: 16px;
   }
 }
 
