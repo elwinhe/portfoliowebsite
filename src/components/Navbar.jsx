@@ -2,11 +2,26 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 
+export const handleLinkClick = (e) => {
+  e.preventDefault();
+  const targetId = e.currentTarget.getAttribute('href').substring(1);
+  const targetElement = document.getElementById(targetId);
+
+  if (targetElement) {
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
   const closeMenu = () => setIsOpen(false)
+
+  const handleNavClick = (e) => {
+    handleLinkClick(e);
+    closeMenu();
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,17 +31,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLinkClick = (e) => {
-    e.preventDefault();
-    const targetId = e.currentTarget.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
-    closeMenu();
-  };
-
   return (
     <header className={`nav-root ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container-wide nav-bar">
@@ -34,9 +38,9 @@ export default function Navbar() {
           <Link to="/" onClick={closeMenu} className="brand-link">Elwin He</Link>
         </div>
         <nav className="nav-links" aria-label="Primary">
-          <a href="#projects" className="link" onClick={handleLinkClick}>Projects</a>
-          <a href="#experience" className="link" onClick={handleLinkClick}>Experience</a>
-          <a href="#contact" className="link" onClick={handleLinkClick}>Contact</a>
+          <a href="#projects" className="link" onClick={handleNavClick}>Projects</a>
+          <a href="#experience" className="link" onClick={handleNavClick}>Experience</a>
+          <a href="#contact" className="link" onClick={handleNavClick}>Contact</a>
         </nav>
         <button
           className="hamburger"
@@ -52,9 +56,9 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
-        <a href="#projects" onClick={handleLinkClick} className="mobile-link">Projects</a>
-        <a href="#experience" onClick={handleLinkClick} className="mobile-link">Experience</a>
-        <a href="#contact" onClick={handleLinkClick} className="mobile-link">Contact</a>
+        <a href="#projects" onClick={handleNavClick} className="mobile-link">Projects</a>
+        <a href="#experience" onClick={handleNavClick} className="mobile-link">Experience</a>
+        <a href="#contact" onClick={handleNavClick} className="mobile-link">Contact</a>
       </div>
     </header>
   )

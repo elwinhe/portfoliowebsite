@@ -2,6 +2,7 @@ import BackgroundCircles from '../components/BackgroundCircles'
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import './home-fullbleed.css'
+import { handleLinkClick } from '../components/Navbar'
 
 export default function Home() {
   const hintRef = useRef(null);
@@ -185,7 +186,7 @@ export default function Home() {
             </div>
             <ul className="links">
               <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2025.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer" className="btn btn-solid">Resume</a></li>
-              <li className="contact"><a href="#contact" className="btn btn-outline">Get in touch</a></li>
+              <li className="contact"><a href="#contact" onClick={handleLinkClick} className="btn btn-outline">Get in touch</a></li>
             </ul>
           </div>
           <img className="hero-img" src={new URL('../assets/elwinhe_pfp_purp.png', import.meta.url).href} alt="Portrait of Elwin He" />
