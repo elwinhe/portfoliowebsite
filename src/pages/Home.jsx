@@ -121,9 +121,6 @@ export default function Home() {
           const originalHeight = video.style.height;
           const originalPosition = video.style.position;
           
-          // Temporarily change dimensions to force layout recalculation
-          video.style.width = '99%';
-          video.style.height = '99%';
           
           // Force a reflow
           void video.offsetHeight;
