@@ -4,11 +4,10 @@ import { useEffect, useRef } from 'react'
 import './home-fullbleed.css'
 
 export default function Home() {
-  const iphoneRef = useRef(null);
   const hintRef = useRef(null);
   const carouselRef = useRef(null);
   const galleryRef = useRef(null);
-  const secondAppRef = useRef(null);
+  const projectRowRef = useRef(null);
 
   useEffect(() => {
     // iPhone visibility is controlled with the hint sentinel below
@@ -62,36 +61,11 @@ export default function Home() {
     return () => io.disconnect();
   }, []);
 
-  // Second app demo fade-in on scroll
-  useEffect(() => {
-    const secondAppSection = secondAppRef.current;
-    if (!secondAppSection) return;
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const iphoneElement = secondAppSection.querySelector('.iphone');
-          if (iphoneElement) {
-            iphoneElement.classList.add('visible');
-          }
-          io.disconnect();
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.1,
-      rootMargin: '0px 0px -10% 0px'
-    });
-
-    io.observe(secondAppSection);
-    return () => io.disconnect();
-  }, []);
-
   // Show scroll-hint on load; fade it out when sentinel enters
   useEffect(() => {
     const hint = hintRef.current || document.getElementById('scrollHint');
     const sentinel = document.getElementById('hintSentinel');
-    const iphoneEl = iphoneRef.current;
+    const projectRow = projectRowRef.current;
     if (!hint || !sentinel) return;
 
     // Ensure it fades in on load using CSS transition
@@ -102,7 +76,10 @@ export default function Home() {
         if (entry.isIntersecting) {
           hint.classList.add('is-hidden');
           // Trigger iPhone fade-in at the same scroll point
-          if (iphoneEl) iphoneEl.classList.add('visible');
+          if (projectRow) {
+            const iphones = projectRow.querySelectorAll('.iphone');
+            iphones.forEach(iphone => iphone.classList.add('visible'));
+          }
         } else {
           // Only show the hint if the sentinel is below the viewport (scrolled up)
           if (entry.boundingClientRect.top > 0) {
@@ -156,44 +133,70 @@ export default function Home() {
           {/* Sentinel: when this enters the viewport, hide the hint */}
           <div id="hintSentinel" aria-hidden="true"></div>
 
-          <div className="fullbleed-list">
-            <div className="iphone" ref={iphoneRef}>
-              <div className="iphone-bezel">
-                {/* Notch */}
-                <div className="iphone-notch">
-                  <span className="notch-speaker"></span>
-                  <span className="notch-camera"></span>
+          <div className="project-row" ref={projectRowRef}>
+            <div className="fullbleed-list">
+              <div className="iphone">
+                <div className="iphone-bezel">
+                  {/* Notch */}
+                  <div className="iphone-notch">
+                    <span className="notch-speaker"></span>
+                    <span className="notch-camera"></span>
+                  </div>
+
+                  {/* Screen (your loop) */}
+                  <img
+                    className="iphone-screen"
+                    src={new URL('../assets/avocado_demo.jpg', import.meta.url).href}
+                    alt="Avocado App Screenshot"
+                    loading="lazy"
+                  />
                 </div>
 
-                {/* Screen (your loop) */}
-                <video
-                  className="iphone-screen"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  poster={new URL('../assets/voteable_intro.png', import.meta.url).href}>
-                  <source src={new URL('../assets/voteable_homepage_demo.webm', import.meta.url).href} type="video/webm" />
-                  <source src={new URL('../assets/voteable_homepage_demo.mp4', import.meta.url).href} type="video/mp4" />
-                </video>
-              </div>
-
-              <div className="project-info">
-                <img 
-                  className="project-title" 
-                  src={new URL('../assets/voteable_wordmark.png', import.meta.url).href}
-                  alt="Voteable"
-                  style={{ 
-                    height: 'auto',
-                    maxWidth: '100%',
-                    width: 'auto'
-                  }}
-                />
-                <p className="project-description">Political news aggregator, mobile app concept</p>
-                <a href="#" className="project-link">View case study →</a>
+                <div className="project-info">
+                  <img
+                    className="project-title"
+                    id="avocado-heading"
+                    src={new URL('../assets/avocado_logo.png', import.meta.url).href}
+                    alt="Avocado"
+                  />
+                  <p className="project-description">Social media mobile app for food enthusiasts</p>
+                  <a href="#" className="project-link">View case study →</a>
+                </div>
               </div>
             </div>
+            <div className="fullbleed-list">
+              <div className="iphone">
+                <div className="iphone-bezel">
+                  {/* Notch */}
+                  <div className="iphone-notch">
+                    <span className="notch-speaker"></span>
+                    <span className="notch-camera"></span>
+                  </div>
 
+                  {/* Screen (your loop) */}
+                  <video
+                    className="iphone-screen"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster={new URL('../assets/voteable_intro.png', import.meta.url).href}>
+                    <source src={new URL('../assets/voteable_demo.webm', import.meta.url).href} type="video/webm" />
+                    <source src={new URL('../assets/voteable_demo.mp4', import.meta.url).href} type="video/mp4" />
+                  </video>
+                </div>
+
+                <div className="project-info">
+                  <img
+                    className="project-title"
+                    src={new URL('../assets/voteable_wordmark.png', import.meta.url).href}
+                    alt="Voteable"
+                  />
+                  <p className="project-description">Political news aggregator, mobile app concept</p>
+                  <a href="#" className="project-link">View case study →</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -254,47 +257,6 @@ export default function Home() {
             <div className="text-3">
             A boba shop that processed over 30,000 orders. I set up a robust supply chain and established a partnership with a local restaurant to keep operations lean, while also designing the brand and marketing materials that built a loyal customer base.
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" aria-labelledby="avocado-heading" ref={secondAppRef}>
-        <div className="container-wide">
-          <div className="fullbleed-list">
-            <div className="iphone">
-              <div className="iphone-bezel-smaller">
-                {/* Notch */}
-                <div className="iphone-notch">
-                  <span className="notch-speaker"></span>
-                  <span className="notch-camera"></span>
-                </div>
-
-                {/* Screen (your loop) */}
-                <img
-                  className="iphone-screen"
-                  src={new URL('../assets/avocado_demo.jpg', import.meta.url).href}
-                  alt="Avocado App Screenshot"
-                  loading="lazy"
-                />
-              </div>
-
-              <div className="project-info">
-                <img 
-                  className="project-title" 
-                  id="avocado-heading"
-                  src={new URL('../assets/avocado_logo.png', import.meta.url).href}
-                  alt="Avocado"
-                  style={{ 
-                    height: 'auto',
-                    maxWidth: '100%',
-                    width: 'auto'
-                  }}
-                />
-                <p className="project-description">Social media mobile app for food enthusiasts</p>
-                <a href="#" className="project-link">View case study →</a>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
