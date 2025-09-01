@@ -11,6 +11,7 @@ export default function Home() {
   const projectRowRef = useRef(null);
   const experienceRef = useRef(null);
   const contactRef = useRef(null);
+  const voteableVideoRef = useRef(null);
   const [formState, setFormState] = useState({ submitting: false, succeeded: false, error: null });
 
   useEffect(() => {
@@ -107,6 +108,27 @@ export default function Home() {
 
     io.observe(contactSection);
     return () => io.disconnect();
+  }, []);
+
+  // Fix for mobile video rendering bug on tab-out/tab-in
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        const video = voteableVideoRef.current;
+        if (video) {
+          // Calling play() forces a repaint which can fix rendering artifacts
+          video.play().catch(error => {
+            console.error("Video replay failed on visibility change:", error);
+          });
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   // Show scroll-hint on load; fade it out when sentinel enters
@@ -249,6 +271,7 @@ export default function Home() {
 
                   {/* Screen (your loop) */}
                   <video
+                    ref={voteableVideoRef}
                     className="iphone-screen"
                     autoPlay
                     muted
