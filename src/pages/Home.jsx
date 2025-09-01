@@ -100,7 +100,16 @@ export default function Home() {
               </div>
 
               <div className="project-info">
-                <h3 className="project-title">Voteable</h3>
+                <img 
+                  className="project-title" 
+                  src={new URL('../assets/voteable_wordmark.png', import.meta.url).href}
+                  alt="Voteable"
+                  style={{ 
+                    height: 'auto',
+                    maxWidth: '100%',
+                    width: 'auto'
+                  }}
+                />
                 <p className="project-description">Political news aggregator, mobile app concept</p>
                 <a href="#" className="project-link">View case study →</a>
               </div>

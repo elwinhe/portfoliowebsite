@@ -3,7 +3,7 @@
 :root {
   /* Colors */
   --color-background: #F1F0F2;
-  --color-text: #0F0F0D;
+  --color-text: #0e0f0d;
   --color-text-light: #6c6581;
   --color-secondary: #CCB81F;
   --color-primary: #5E25CC;
@@ -41,16 +41,16 @@
   --text-xs: 12px;
   --text-sm: 14px;
   --text-base: 16px;
-  --text-h3: 18px;
+  --text-h3: 24px;
   --text-h2: 28px;
   --text-h1: 32px; /* mobile base */
 }
 
 @media (min-width: 815px) {
   :root {
-    --text-h1: 40px; /* desktop hero */
-    --text-h2: 32px;
-    --text-h3: 20px;
+    --text-h1: 28px; /* desktop hero */
+    --text-h2: 26px;
+    --text-h3: 24px;
   }
 }
 
