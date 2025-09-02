@@ -78,7 +78,7 @@ export default function TippitTea() {
           <p>
           Tippit Tea began as a casual dorm room idea between me and a cofounder, but quickly grew into a full-scale campus boba shop. With no roadmap or funding, we designed the brand from scratch, experimented with scrappy marketing, and solved legal hurdles by partnering with a local ghost kitchen. Over time, we scaled into a 30,000-order operation that blended creativity, logistics, and entrepreneurship.
           </p>
-          <h3>Press</h3>
+          <h3>Links</h3>
           <p>
           <ul>
               <li><a className="hover-underline" href="https://case.edu/entrepreneurship/news/launchnet-client-tippittea" target="_blank"> “Tippit Tea | A CWRU Student Startup Story”</a></li>
