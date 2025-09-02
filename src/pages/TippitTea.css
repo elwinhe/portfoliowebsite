@@ -94,11 +94,15 @@
   margin-bottom: var(--space-5);
 }
 
-.supply-chain-content h3 {
+h3 {
   font-size: clamp(20px, 4vw, 28px);
   line-height: 1.6;
   margin-bottom: var(--space-4);
   font-weight: var(--font-weight-bold);
+}
+
+a.hover-underline:hover {
+  text-decoration: underline;
 }
 
 .flowchart {

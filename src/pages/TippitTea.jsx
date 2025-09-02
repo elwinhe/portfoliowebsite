@@ -77,11 +77,18 @@ export default function TippitTea() {
           <h2>The Backstory</h2>
           <p>
           Tippit Tea began as a casual dorm room idea between me and a cofounder, but quickly grew into a full-scale campus boba shop. With no roadmap or funding, we designed the brand from scratch, experimented with scrappy marketing, and solved legal hurdles by partnering with a local ghost kitchen. Over time, we scaled into a 30,000-order operation that blended creativity, logistics, and entrepreneurship.
-
+          </p>
+          <h3>Press</h3>
+          <p>
+          <ul>
+              <li><a className="hover-underline" href="https://case.edu/entrepreneurship/news/launchnet-client-tippittea" target="_blank"> “Tippit Tea | A CWRU Student Startup Story”</a></li>
+              <li><a className="hover-underline" href="https://observer.case.edu/a-tea-riffic-trio-meeting-the-student-entrepreneurs-behind-tippit-tea/" target="_blank">“A Tea-riffic Trio: Meeting the student entrepreneurs behind Tippit Tea”</a></li>
+              <li><a className="hover-underline" href="https://instagram.com/tippittea" target="_blank">Tippit Tea | Instagram</a></li>
+              <li><a className="hover-underline" href="https://tippittea.com" target="_blank">Tippit Tea | Website</a></li>
+          </ul>
           </p>
         </div>
       </section>
-
       {/* 3. Scale / Operations Section */}
       <section className="scale-section section section-fade" ref={(el) => (sectionsRef.current[2] = el)}>
         <div className="container">
