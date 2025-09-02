@@ -4,8 +4,8 @@ import './TippitTea.css';
 
 const designImages = [
   { src: new URL('../assets/tippittea/tmv2.jpg', import.meta.url).href, alt: 'Matcha vs Thai tea branding', tall: true },
-  { src: new URL('../assets/tippittea/bubble.jpg', import.meta.url).href, alt: 'Tippit Tea mascot sticker' },
-  { src: new URL('../assets/tippittea/panda.png', import.meta.url).href, alt: 'Simple jelly drink illustration' },
+  { src: new URL('../assets/tippittea/panda.png', import.meta.url).href, alt: 'Tippit Tea mascot sticker' },
+  { src: new URL('../assets/tippittea/bubble.jpg', import.meta.url).href, alt: 'Simple jelly drink illustration' },
   { src: new URL('../assets/tippittea/fmp.jpg', import.meta.url).href, alt: 'Tippit Tea at a flea market' },
   { src: new URL('../assets/tippittea/otg.jpg', import.meta.url).href, alt: 'Tippit Tea giveaway promotion' }
 ];
