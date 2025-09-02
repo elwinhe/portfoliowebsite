@@ -148,6 +148,67 @@ a { color: inherit; text-decoration: none; }
   font-size: var(--text-sm);
 }
 
+/* Buttons (shared) */
+.btn {
+  display: inline-block;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+.btn-solid {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-solid:hover, .btn-primary:hover {
+  background: var(--color-primary-light);
+  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
+  color: #fff;
+  filter: brightness(1.05);
+}
+
+.btn-outline {
+  color: var(--color-primary);
+  background: transparent;
+  border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  color: var(--color-primary);
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.25);
+}
+
+/* Animation keyframes (shared) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceY { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(8px) } }
+@keyframes breathe { 0%, 100% { opacity: 1 } 50% { opacity: .85 } }
+
 /* PPNeueMontreal Font Faces */
 @font-face {
   font-family: 'PPNeueMontreal';

@@ -7,28 +7,7 @@
   font-family: var(--font-sans);
 }
 
-/* Animation keyframes */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Animation keyframes moved to theme.css */
 
 /* Apply animations to elements */
 .home .home-content .text-1 {
@@ -206,8 +185,8 @@
 
 @media (max-width: 815px) {
   .home .links a {
-    font-size: clamp(20px, 6vw, 28px);
-    padding: 14px 0;
+    font-size: clamp(20px, 6vw, 28px) !important;
+    padding: 12px 0 !important;
     width: 96%;
   }
   .home .links .btn-outline {
@@ -222,40 +201,19 @@
   .home .links { margin: 0; padding: 20px 0; }
 }
 
-/* === Reusable Button Styles === */
-.btn {
-  display: inline-block;
-  border-radius: 100px;
-  text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  transition: all 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-  border: 2px solid transparent; /* Base border for consistent sizing */
+@media (max-width: 640px) {
+  .home .links a {
+    font-size: clamp(20px, 6vw, 24px) !important;
+    padding: 10px 0 !important;
+    width: 96%;
+  }
+  .home .links .btn-outline {
+    font-size: clamp(20px, 6vw, 24px) !important;
+    padding: 10px 0 !important; /* Adjust for border */
+  }
 }
 
-.btn-solid {
-  background: var(--color-primary);
-  color: #fff;
-}
-
-.btn-solid:hover, .btn-primary:hover {
-  background: var(--color-primary-light);
-  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
-  color: #fff;
-  filter: brightness(1.05); /* Added for consistency */
-}
-
-.btn-outline {
-  color: var(--color-primary);
-  background: transparent;
-  border-color: var(--color-primary);
-}
-
-.btn-outline:hover {
-  color: var(--color-primary);
-  background: #fff;
-  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.25);
-}
+/* Reusable Button Styles moved to theme.css */
 
 /* === Button Sizing === */
 /* Hero Buttons */
