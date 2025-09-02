@@ -790,6 +790,7 @@
 .site-footer {
   padding: var(--space-8) 0;
   text-align: center;
+  letter-spacing: 0.02em;
 }
 
 .site-footer a, .site-footer p {
