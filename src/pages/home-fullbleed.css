@@ -219,11 +219,11 @@
 /* === Button Sizing === */
 /* Hero Buttons */
 .home .links a {
-  font-size: 30px;
+  font-size: 28px;
   padding: 14px 66px;
 }
 .home .links .btn-outline {
-  padding: 12px 64px; /* Adjust for border */
+  padding: 14px 64px; /* Adjust for border */
 }
 /* Gallery Button */
 .gallery-action .btn-outline {
