@@ -91,6 +91,7 @@
   margin: 0; 
   padding: 20px 0; 
   opacity: 0; /* Start hidden for animation */
+  letter-spacing: 0.02em;
 }
 .home .links li { list-style: none; display: block; margin: 20px 0; }
 
@@ -226,8 +227,9 @@
 }
 /* Gallery Button */
 .gallery-action .btn-outline {
-  font-size: clamp(16px, 3vw, 20px);
+  font-size: clamp(20px, 3vw, 22px);
   padding: 10px 32px;
+  letter-spacing: 0.01em;
 }
 
 
@@ -440,6 +442,7 @@
 .project-info {
   margin-top: var(--space-2);
   text-align: center;
+  letter-spacing: 0.01em;
 }
 
 .project-title {
