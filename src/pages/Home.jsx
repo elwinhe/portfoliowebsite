@@ -294,7 +294,7 @@ export default function Home() {
                     muted
                     loop
                     playsInline
-                    poster={new URL('../assets/voteable_intro.png', import.meta.url).href}>
+                    poster={new URL('../assets/voteable_intro.jpg', import.meta.url).href}>
                     <source src={new URL('../assets/voteable_demo.webm', import.meta.url).href} type="video/webm" />
                     <source src={new URL('../assets/voteable_demo.mp4', import.meta.url).href} type="video/mp4" />
                   </video>
