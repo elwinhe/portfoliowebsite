@@ -159,6 +159,9 @@ export default function TippitTea() {
           <Link to="/" className="btn btn-primary">Back to Home</Link>
           {/* Or <a href="#projects" className="btn btn-solid">See More Projects</a> */}
         </div>
+        <div className="container">
+            <p>© 2025 Elwin He</p>
+        </div>
       </footer>
 
       {lightboxIndex !== null && (

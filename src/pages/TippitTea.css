@@ -3,6 +3,7 @@
 .tippit-tea-page {
   font-family: var(--font-sans);
   color: var(--color-text);
+  letter-spacing: 0.02em;
   padding-bottom: var(--space-10);
 }
 
@@ -278,11 +279,25 @@ a.hover-underline:hover {
 
 /* CTA Footer */
 .cta-footer {
-  padding: var(--space-10) 0;
+  padding: var(--space-10) 0 0 0;
   text-align: center;
+  letter-spacing: 0.02em;
 }
 
 .cta-footer .btn-primary {
   font-size: clamp(18px, 3.5vw, 24px);
   padding: 12px 40px;
+}
+
+.cta-footer p {
+  font-size: clamp(16px, 3vw, 20px);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-light);
+  text-decoration: none;
+  margin-top: var(--space-10);
+  margin-bottom: 0;
+}
+
+.cta-footer a:hover {
+  text-decoration: underline;
 }
