@@ -89,8 +89,26 @@ export default function TippitTea() {
           </p>
         </div>
       </section>
+
+      {/* 3. Brand / Design Section */}
+      <section className="brand-section section section-fade" ref={(el) => (sectionsRef.current[2] = el)}>
+        <div className="container">
+          <h2>Brand & Design</h2>
+          <div className="design-grid">
+            {designImages.map((img, index) => (
+              <div 
+                key={img.src} 
+                className={`grid-item ${img.tall ? 'tall' : ''}`}
+                onClick={() => openLightbox(index)}
+              >
+                <img src={img.src} alt={img.alt} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* 3. Scale / Operations Section */}
-      <section className="scale-section section section-fade" ref={(el) => (sectionsRef.current[2] = el)}>
+      <section className="scale-section section section-fade" ref={(el) => (sectionsRef.current[3] = el)}>
         <div className="container">
           <h2>Scaling Operations</h2>
           <figure>
@@ -112,24 +130,6 @@ export default function TippitTea() {
               <span>👩‍🍳<br/><i>Ops</i></span> → 
               <span>🎓<br/><i>Customers</i></span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Brand / Design Section */}
-      <section className="brand-section section section-fade" ref={(el) => (sectionsRef.current[3] = el)}>
-        <div className="container">
-          <h2>Brand & Design</h2>
-          <div className="design-grid">
-            {designImages.map((img, index) => (
-              <div 
-                key={img.src} 
-                className={`grid-item ${img.tall ? 'tall' : ''}`}
-                onClick={() => openLightbox(index)}
-              >
-                <img src={img.src} alt={img.alt} />
-              </div>
-            ))}
           </div>
         </div>
       </section>
