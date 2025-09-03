@@ -258,6 +258,7 @@ export default function Home() {
 
                   {/* Screen (your loop) */}
                   <img
+                    onClick={() => window.open("https://www.notion.so/Avocado-App-261d4d1bf5f180b9a796e50039139f95?source=copy_link", "_blank")}
                     className="iphone-screen"
                     src={new URL('../assets/avocado_demo.jpg', import.meta.url).href}
                     alt="Avocado App Screenshot"
@@ -289,6 +290,7 @@ export default function Home() {
                   {/* Screen (your loop) */}
                   <video
                     ref={voteableVideoRef}
+                    onClick={() => window.open("https://www.notion.so/Voteable-261d4d1bf5f180baadf1eaa3650b43d7?source=copy_link", "_blank")}
                     className="iphone-screen"
                     autoPlay
                     muted
@@ -323,6 +325,7 @@ export default function Home() {
 
                   {/* Screen (your loop) */}
                   <img
+                    onClick={() => window.open("https://www.notion.so/Itinerary-ai-263d4d1bf5f1805ab454eab45cf4e3e1?source=copy_link", "_blank")}
                     className="iphone-screen"
                     src={new URL('../assets/itinerary_demo.png', import.meta.url).href}
                     alt="Itinerary App Screenshot"
@@ -332,9 +335,9 @@ export default function Home() {
 
                 <div className="project-info">
                   <img
-                    className="project-title"v
+                    className="project-title"
                     src={new URL('../assets/itinerary.png', import.meta.url).href}
-                    alt="Voteable"
+                    alt="Itinerary"
                   />
                   <p className="project-description">Travel planning RAG chatbot, web & moble app</p>
                   <a href="https://www.notion.so/Itinerary-ai-263d4d1bf5f1805ab454eab45cf4e3e1?source=copy_link" target="_blank" rel="noopener noreferrer" className="project-link">View case study</a>
@@ -450,7 +453,7 @@ export default function Home() {
           <div className="exp-body">
             <header className="exp-head">
               <h3 className="exp-role">Software Engineering Intern — Android</h3>
-              <div className="exp-meta">Zillow · Summer 2023 · Seattle, WA</div>
+              <div className="exp-meta">Zillow · Summer 2023 · San Francisco, CA</div>
             </header>
 
             <ul className="exp-points">
