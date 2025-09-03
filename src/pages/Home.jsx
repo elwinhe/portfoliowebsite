@@ -390,11 +390,11 @@ export default function Home() {
               <picture className="carousel-image">
                 <source 
                   media="(min-width: 1000px)" 
-                  srcSet={new URL('../assets/tippittea/brown_sugar_panda.png', import.meta.url).href}
+                  srcSet={new URL('../assets/tippittea/lineup.jpg', import.meta.url).href}
                 />
                 <img 
-                  src={new URL('../assets/tippittea/brown_sugar_mobile.png', import.meta.url).href}
-                  alt="Tippit Tea - Image 4"
+                  src={new URL('../assets/tippittea/lineup_mobile.jpg', import.meta.url).href}
+                  alt="Launch Day Lineup"
                   loading="lazy"
                 />
               </picture>
