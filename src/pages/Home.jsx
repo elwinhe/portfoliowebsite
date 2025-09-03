@@ -311,6 +311,36 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            <div className="fullbleed-list">
+              <div className="iphone">
+                <div className="iphone-bezel">
+                  {/* Notch */}
+                  <div className="iphone-notch">
+                    <span className="notch-speaker"></span>
+                    <span className="notch-camera"></span>
+                  </div>
+
+                  {/* Screen (your loop) */}
+                  <img
+                    className="iphone-screen"
+                    src={new URL('../assets/itinerary_demo.png', import.meta.url).href}
+                    alt="Itinerary App Screenshot"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="project-info">
+                  <img
+                    className="project-title"v
+                    src={new URL('../assets/itinerary.png', import.meta.url).href}
+                    alt="Voteable"
+                  />
+                  <p className="project-description">Travel planning RAG chatbot, web & moble app</p>
+                  <a href="https://www.notion.so/Itinerary-ai-263d4d1bf5f1805ab454eab45cf4e3e1?source=copy_link" target="_blank" rel="noopener noreferrer" className="project-link">View case study</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
