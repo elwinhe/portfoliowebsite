@@ -22,10 +22,12 @@ export default function BackgroundCircles() {
       const y1 = window.scrollY * -0.1; // Negative value to move up
       const y2 = window.scrollY * -0.2; // Different speed for parallax
       const y3 = window.scrollY * -0.35; // Different speed for parallax
+      const y4 = window.scrollY * -0.25; // Different speed for parallax
 
       el.style.setProperty('--circle-offset', `${y1}px`)
       el.style.setProperty('--circle-2-offset', `${y2}px`)
       el.style.setProperty('--circle-3-offset', `${y3}px`)
+      el.style.setProperty('--circle-4-offset', `${y4}px`)
       
       // Update circle opacity based on scroll progress
       const baseOpacity = 0.25
@@ -69,6 +71,7 @@ export default function BackgroundCircles() {
       <div className="circle circle-1" />
       <div className="circle circle-2" />
       <div className="circle circle-3" />
+      <div className="circle circle-4" />
     </div>
   )
 }

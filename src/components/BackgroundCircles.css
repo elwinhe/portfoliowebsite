@@ -38,11 +38,21 @@
   transform: translate(-50%, calc(-50% + var(--circle-3-offset, 0px)));
 }
 
+.bg-circles .circle-4 {
+  top: 300vh;
+  left: 92vw;
+  width: 48vw;
+  height: 48vw;
+  transform: translate(-50%, calc(-50% + var(--circle-4-offset, 0px)));
+}
+
+
 
 @media (max-width: 767px) {
   .bg-circles .circle-1 { top: 25vh; left: 25vw; width: 70vw; height: 70vw; }
   .bg-circles .circle-2 { top: 120vh; left: 85vw; width: 60vw; height: 60vw; } 
   .bg-circles .circle-3 { top: 280vh; left: 12vw; width: 56vw; height: 56vw; }
+  .bg-circles .circle-4 { top: 360vh; left: 92vw; width: 48vw; height: 48vw; }
 }
 
 

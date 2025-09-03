@@ -737,14 +737,14 @@
 
 .contact-sub{ color:var(--color-text-gray); margin: var(--space-4) 0 var(--space-5); font-size: clamp(16px, 3vw, 20px); }
 .contact-form{
-  display:grid; gap:12px; grid-template-columns: 1fr 1fr;
+  display:grid; gap:12px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   background:#fff; border:1px solid rgba(0,0,0,.06);
   box-shadow: 0 4px 20px rgba(0,0,0,.06);
   border-radius: var(--radius-lg); padding: var(--space-5);
   color: var(--color-text);
   letter-spacing: 0.02em;
 }
-.contact-form label{ display:flex; flex-direction:column; gap:6px; font-size: clamp(14px, 2.5vw, 18px); }
+.contact-form label{ display:flex; flex-direction:column; gap:6px; font-size: clamp(14px, 2.5vw, 18px); min-width: 0; }
 .contact-form label.full{ grid-column:1 / -1; }
 .contact-form input, .contact-form textarea{
   border:1px solid rgba(0,0,0,.12); border-radius:10px; padding:10px 12px;
@@ -753,6 +753,8 @@
   color: var(--color-text);
   letter-spacing: 0.02em;
   resize: none;
+  min-width: 0;
+  width: 100%;
 }
 .contact-form .btn-primary{
   grid-column: 1 / -1;
