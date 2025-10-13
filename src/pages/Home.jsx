@@ -427,7 +427,7 @@ export default function Home() {
           />
           <div className="exp-body">
             <header className="exp-head">
-              <h3 className="exp-role">Software Engineer — Backend</h3>
+              <h3 className="exp-role">Software Engineer — Backen (contract)</h3>
               <div className="exp-meta">Endeavor · 2025 · San Francisco, CA</div>
             </header>
 
