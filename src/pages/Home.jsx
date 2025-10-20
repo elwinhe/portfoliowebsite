@@ -1,4 +1,6 @@
 import BackgroundCircles from '../components/BackgroundCircles'
+import InteractionObserver from '../components/InteractionObserver'
+import Carousel from '../components/Carousel'
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import './home-fullbleed.css'
@@ -6,7 +8,6 @@ import { handleLinkClick } from '../components/Navbar'
 
 export default function Home() {
   const hintRef = useRef(null);
-  const carouselRef = useRef(null);
   const galleryRef = useRef(null);
   const projectRowRef = useRef(null);
   const experienceRef = useRef(null);
@@ -18,97 +19,35 @@ export default function Home() {
     // iPhone visibility is controlled with the hint sentinel below
   }, []);
 
-  // Image carousel functionality
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
+  // Carousel items
+  const carouselItems = [
+    {
+      src: new URL('../assets/tippittea/matcha_blueberry_mobile.jpg', import.meta.url).href,
+      srcSet: new URL('../assets/tippittea/matcha_blueberry_web.jpg', import.meta.url).href,
+      media: '(min-width: 1000px)',
+      alt: 'Tippit Tea - Image 1',
+    },
+    {
+      src: new URL('../assets/tippittea/tippittea_crossed_mobile.jpg', import.meta.url).href,
+      srcSet: new URL('../assets/tippittea/tippittea_crossed_web.jpg', import.meta.url).href,
+      media: '(min-width: 1000px)',
+      alt: 'Tippit Tea - Image 2',
+    },
+    {
+      src: new URL('../assets/tippittea/customers_mobile.jpg', import.meta.url).href,
+      srcSet: new URL('../assets/tippittea/customers.jpg', import.meta.url).href,
+      media: '(min-width: 1000px)',
+      alt: 'Tippit Tea - Image 3',
+    },
+    {
+      src: new URL('../assets/tippittea/lineup_mobile.jpg', import.meta.url).href,
+      srcSet: new URL('../assets/tippittea/lineup.jpg', import.meta.url).href,
+      media: '(min-width: 1000px)',
+      alt: 'Launch Day Lineup',
+    },
+  ];
 
-    const images = carousel.querySelectorAll('.carousel-image');
-    let currentIndex = 0;
-
-    const cycleImages = () => {
-      // Remove active class from all images
-      images.forEach(img => img.classList.remove('active'));
-      
-      // Add active class to current image
-      images[currentIndex].classList.add('active');
-      
-      // Move to next image
-      currentIndex = (currentIndex + 1) % images.length;
-    };
-
-    // Start the carousel
-    const interval = setInterval(cycleImages, 2380);
-
-    // Cleanup on unmount
-    return () => clearInterval(interval);
-  }, []);
-
-  // Gallery fade-in animation
-  useEffect(() => {
-    const gallery = galleryRef.current;
-    if (!gallery) return;
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          gallery.classList.add('visible');
-          io.disconnect();
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.1,
-      rootMargin: '0px 0px -10% 0px'
-    });
-
-    io.observe(gallery);
-    return () => io.disconnect();
-  }, []);
-
-  // Experience section fade-in animation
-  useEffect(() => {
-    const experienceSection = experienceRef.current;
-    if (!experienceSection) return;
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          experienceSection.classList.add('visible');
-          io.disconnect();
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.1,
-      rootMargin: '0px 0px -10% 0px'
-    });
-
-    io.observe(experienceSection);
-    return () => io.disconnect();
-  }, []);
-
-  // Contact form fade-in animation
-  useEffect(() => {
-    const contactSection = contactRef.current;
-    if (!contactSection) return;
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          contactSection.classList.add('visible');
-          io.disconnect();
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.1,
-      rootMargin: '0px 0px -10% 0px'
-    });
-
-    io.observe(contactSection);
-    return () => io.disconnect();
-  }, []);
+  // Removed three separate IntersectionObservers; handled by InteractionObserver components below
 
   // Fix for mobile video rendering bug on tab-out/tab-in
   useEffect(() => {
@@ -213,6 +152,37 @@ export default function Home() {
 
   return (
     <main style={{ position: 'relative', zIndex: 1 }}>
+      {/* Fade-in observer for gallery, experience, and contact sections */}
+      <InteractionObserver
+        refs={[galleryRef, experienceRef, contactRef]}
+        threshold={0.1}
+        rootMargin="0px 0px -10% 0px"
+        once
+        onEnter={(el) => el.classList.add('visible')}
+      />
+
+      {/* Scroll-hint observer for sentinel */}
+      <InteractionObserver
+        refs={{ current: typeof document !== 'undefined' ? document.getElementById('hintSentinel') : null }}
+        threshold={0}
+        rootMargin="0px 0px -40% 0px"
+        once={false}
+        onEnter={() => {
+          const hint = hintRef.current || document.getElementById('scrollHint');
+          const projectRow = projectRowRef.current;
+          if (hint) hint.classList.add('is-hidden');
+          if (projectRow) {
+            const iphones = projectRow.querySelectorAll('.iphone');
+            iphones.forEach(iphone => iphone.classList.add('visible'));
+          }
+        }}
+        onLeave={(_el, entry) => {
+          const hint = hintRef.current || document.getElementById('scrollHint');
+          if (hint && entry.boundingClientRect.top > 0) {
+            hint.classList.remove('is-hidden');
+          }
+        }}
+      />
       <BackgroundCircles />
       <section className="home home-section">
         <div className="container-wide hero">
@@ -353,52 +323,7 @@ export default function Home() {
       <section className="section" aria-labelledby="gallery-heading">
         <div className="container-wide gallery-hero" ref={galleryRef}>
           <div className="gallery-container">
-            <div className="image-carousel" ref={carouselRef}>
-              <picture className="carousel-image active">
-                <source 
-                  media="(min-width: 1000px)" 
-                  srcSet={new URL('../assets/tippittea/matcha_blueberry_web.jpg', import.meta.url).href}
-                />
-                <img 
-                  src={new URL('../assets/tippittea/matcha_blueberry_mobile.jpg', import.meta.url).href}
-                  alt="Tippit Tea - Image 1"
-                  loading="lazy"
-                />
-              </picture>
-              <picture className="carousel-image">
-                <source 
-                  media="(min-width: 1000px)" 
-                  srcSet={new URL('../assets/tippittea/tippittea_crossed_web.jpg', import.meta.url).href}
-                />
-                <img 
-                  src={new URL('../assets/tippittea/tippittea_crossed_mobile.jpg', import.meta.url).href}
-                  alt="Tippit Tea - Image 2"
-                  loading="lazy"
-                />
-              </picture>
-              <picture className="carousel-image">
-                <source 
-                  media="(min-width: 1000px)" 
-                  srcSet={new URL('../assets/tippittea/customers.jpg', import.meta.url).href}
-                />
-                <img 
-                  src={new URL('../assets/tippittea/customers_mobile.jpg', import.meta.url).href}
-                  alt="Tippit Tea - Image 3"
-                  loading="lazy"
-                />
-              </picture>
-              <picture className="carousel-image">
-                <source 
-                  media="(min-width: 1000px)" 
-                  srcSet={new URL('../assets/tippittea/lineup.jpg', import.meta.url).href}
-                />
-                <img 
-                  src={new URL('../assets/tippittea/lineup_mobile.jpg', import.meta.url).href}
-                  alt="Launch Day Lineup"
-                  loading="lazy"
-                />
-              </picture>
-            </div>
+            <Carousel items={carouselItems} />
           </div>
           <div className="gallery-content">
             <div className="text-1">Tippit Tea</div>
