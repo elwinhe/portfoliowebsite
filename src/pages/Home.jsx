@@ -4,7 +4,6 @@ import Carousel from '../components/Carousel'
 import IPhoneProject from '../components/IPhoneProject'
 import ExperienceCard from '../components/ExperienceCard'
 import ContactForm from '../components/ContactForm'
-import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import './home-fullbleed.css'
 import { handleLinkClick } from '../components/Navbar'
@@ -165,7 +164,7 @@ export default function Home() {
             <div className="text-1">Hey, I'm Elwin</div>
             <div className="text-2">Product Engineer & UX</div>
             <div className="text-3">
-              From boba shops to mobile apps — I turn ideas into systems. Specializes in end-to-end execution and thoughtful interfaces. Former android engineer intern at Zillow, backend at Endeavor.ai.
+              From boba shops to mobile apps — I turn ideas into systems. Specializes in end-to-end execution and thoughtful interfaces. Former android engineer intern at Zillow.
             </div>
             <ul className="links">
               <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2025.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer" className="btn btn-solid">Resume</a></li>
