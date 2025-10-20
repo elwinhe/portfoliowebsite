@@ -1,6 +1,9 @@
 import BackgroundCircles from '../components/BackgroundCircles'
 import InteractionObserver from '../components/InteractionObserver'
 import Carousel from '../components/Carousel'
+import IPhoneProject from '../components/IPhoneProject'
+import ExperienceCard from '../components/ExperienceCard'
+import ContactForm from '../components/ContactForm'
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import './home-fullbleed.css'
@@ -13,7 +16,6 @@ export default function Home() {
   const experienceRef = useRef(null);
   const contactRef = useRef(null);
   const voteableVideoRef = useRef(null);
-  const [formState, setFormState] = useState({ submitting: false, succeeded: false, error: null });
 
   useEffect(() => {
     // iPhone visibility is controlled with the hint sentinel below
@@ -46,8 +48,6 @@ export default function Home() {
       alt: 'Launch Day Lineup',
     },
   ];
-
-  // Removed three separate IntersectionObservers; handled by InteractionObserver components below
 
   // Fix for mobile video rendering bug on tab-out/tab-in
   useEffect(() => {
@@ -123,32 +123,7 @@ export default function Home() {
     return () => io.disconnect();
   }, []);
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    setFormState({ submitting: true, succeeded: false, error: null });
-    const form = e.target;
-    const data = new FormData(form);
-
-    try {
-        const response = await fetch(form.action, {
-            method: 'POST',
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-        if (response.ok) {
-            setFormState({ submitting: false, succeeded: true, error: null });
-            form.reset();
-        } else {
-            const responseData = await response.json();
-            const errorMessage = responseData.errors ? responseData.errors.map(error => error.message).join(", ") : "Oops! There was a problem submitting your form";
-            setFormState({ submitting: false, succeeded: false, error: errorMessage });
-        }
-    } catch (error) {
-        setFormState({ submitting: false, succeeded: false, error: "Oops! There was a problem submitting your form" });
-    }
-  };
+  // Contact form handled by ContactForm component
 
   return (
     <main style={{ position: 'relative', zIndex: 1 }}>
@@ -218,101 +193,46 @@ export default function Home() {
 
           <div id="projects" className="project-row" ref={projectRowRef}>
             <div className="fullbleed-list">
-              <div className="iphone">
-                <div className="iphone-bezel">
-                  {/* Notch */}
-                  <div className="iphone-notch">
-                    <span className="notch-speaker"></span>
-                    <span className="notch-camera"></span>
-                  </div>
-
-                  {/* Screen (your loop) */}
-                  <img
-                    onClick={() => window.open("https://www.notion.so/Avocado-App-261d4d1bf5f180b9a796e50039139f95?source=copy_link", "_blank")}
-                    className="iphone-screen"
-                    src={new URL('../assets/avocado_demo.jpg', import.meta.url).href}
-                    alt="Avocado App Screenshot"
-                    loading="lazy"
-                  />
-                </div>
-
-                <div className="project-info">
-                  <img
-                    className="project-title"
-                    id="avocado-heading"
-                    src={new URL('../assets/avocado_logo.png', import.meta.url).href}
-                    alt="Avocado"
-                  />
-                  <p className="project-description">Social media mobile app for food enthusiasts</p>
-                  <a href="https://www.notion.so/Avocado-App-261d4d1bf5f180b9a796e50039139f95?source=copy_link"target="_blank" rel="noopener noreferrer" className="project-link">View case study</a>
-                </div>
-              </div>
+              <IPhoneProject
+                screenType="image"
+                onScreenClick={() => window.open("https://www.notion.so/Avocado-App-261d4d1bf5f180b9a796e50039139f95?source=copy_link", "_blank")}
+                imgSrc={new URL('../assets/avocado_demo.jpg', import.meta.url).href}
+                imgAlt="Avocado App Screenshot"
+                infoTitleSrc={new URL('../assets/avocado_logo.png', import.meta.url).href}
+                infoTitleAlt="Avocado"
+                infoTitleId="avocado-heading"
+                infoDescription="Social media mobile app for food enthusiasts"
+                infoLinkHref="https://www.notion.so/Avocado-App-261d4d1bf5f180b9a796e50039139f95?source=copy_link"
+              />
             </div>
             <div className="fullbleed-list">
-              <div className="iphone">
-                <div className="iphone-bezel">
-                  {/* Notch */}
-                  <div className="iphone-notch">
-                    <span className="notch-speaker"></span>
-                    <span className="notch-camera"></span>
-                  </div>
-
-                  {/* Screen (your loop) */}
-                  <video
-                    ref={voteableVideoRef}
-                    onClick={() => window.open("https://www.notion.so/Voteable-261d4d1bf5f180baadf1eaa3650b43d7?source=copy_link", "_blank")}
-                    className="iphone-screen"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    poster={new URL('../assets/voteable_intro.jpg', import.meta.url).href}>
-                    <source src={new URL('../assets/voteable_demo.webm', import.meta.url).href} type="video/webm" />
-                    <source src={new URL('../assets/voteable_demo.mp4', import.meta.url).href} type="video/mp4" />
-                  </video>
-                </div>
-
-                <div className="project-info">
-                  <img
-                    className="project-title"
-                    src={new URL('../assets/voteable_wordmark.png', import.meta.url).href}
-                    alt="Voteable"
-                  />
-                  <p className="project-description">Political news aggregator, mobile app</p>
-                  <a href="https://www.notion.so/Voteable-261d4d1bf5f180baadf1eaa3650b43d7?source=copy_link" target="_blank" rel="noopener noreferrer" className="project-link">View case study</a>
-                </div>
-              </div>
+              <IPhoneProject
+                screenType="video"
+                videoRef={voteableVideoRef}
+                onScreenClick={() => window.open("https://www.notion.so/Voteable-261d4d1bf5f180baadf1eaa3650b43d7?source=copy_link", "_blank")}
+                poster={new URL('../assets/voteable_intro.jpg', import.meta.url).href}
+                videoSources={[
+                  { src: new URL('../assets/voteable_demo.webm', import.meta.url).href, type: 'video/webm' },
+                  { src: new URL('../assets/voteable_demo.mp4', import.meta.url).href, type: 'video/mp4' },
+                ]}
+                infoTitleSrc={new URL('../assets/voteable_wordmark.png', import.meta.url).href}
+                infoTitleAlt="Voteable"
+                infoDescription="Political news aggregator, mobile app"
+                infoLinkHref="https://www.notion.so/Voteable-261d4d1bf5f180baadf1eaa3650b43d7?source=copy_link"
+              />
             </div>
 
             <div className="fullbleed-list">
-              <div className="iphone">
-                <div className="iphone-bezel">
-                  {/* Notch */}
-                  <div className="iphone-notch">
-                    <span className="notch-speaker"></span>
-                    <span className="notch-camera"></span>
-                  </div>
-
-                  {/* Screen (your loop) */}
-                  <img
-                    onClick={() => window.open("https://www.notion.so/Itinerary-ai-263d4d1bf5f1805ab454eab45cf4e3e1?source=copy_link", "_blank")}
-                    className="iphone-screen"
-                    src={new URL('../assets/itinerary_demo.png', import.meta.url).href}
-                    alt="Itinerary App Screenshot"
-                    loading="lazy"
-                  />
-                </div>
-
-                <div className="project-info">
-                  <img
-                    className="project-title"
-                    src={new URL('../assets/itinerary.png', import.meta.url).href}
-                    alt="Itinerary"
-                  />
-                  <p className="project-description">Travel planning RAG chatbot, web & moble app</p>
-                  <a href="https://www.notion.so/Itinerary-ai-263d4d1bf5f1805ab454eab45cf4e3e1?source=copy_link" target="_blank" rel="noopener noreferrer" className="project-link">View case study</a>
-                </div>
-              </div>
+              <IPhoneProject
+                screenType="image"
+                onScreenClick={() => window.open("https://www.notion.so/Itinerary-ai-263d4d1bf5f1805ab454eab45cf4e3e1?source=copy_link", "_blank")}
+                imgSrc={new URL('../assets/itinerary_demo.png', import.meta.url).href}
+                imgAlt="Itinerary App Screenshot"
+                infoTitleSrc={new URL('../assets/itinerary.png', import.meta.url).href}
+                infoTitleAlt="Itinerary"
+                infoDescription="Travel planning RAG chatbot, web & moble app"
+                infoLinkHref="https://www.notion.so/Itinerary-ai-263d4d1bf5f1805ab454eab45cf4e3e1?source=copy_link"
+              />
             </div>
           </div>
         </div>
@@ -342,56 +262,34 @@ export default function Home() {
 
       <section className="section experience" id="experience" ref={experienceRef}>
         <h2 className="section-title">Experience</h2>
-        <article className="exp-card">
-          <img
-            className="exp-logo"
-            aria-hidden="true"
-            src={new URL('../assets/endv_logo.png', import.meta.url).href}
-            alt="Endeavor"
-            loading="lazy"
-          />
-          <div className="exp-body">
-            <header className="exp-head">
-              <h3 className="exp-role">Software Engineer — Contractor</h3>
-              <div className="exp-meta">Endeavor · 2025 · San Francisco, CA</div>
-            </header>
-
-            <ul className="exp-points">
-              <li>Architected a distributed email-processing pipeline that turned Outlook messages into structured tasks with multi-tenant filtering for scalable client integrations.</li>
-              <li>Improved performance by cutting database load 50%+ with a write-through Redis cache for timestamp lookups.</li>
-              <li>Shipped production features by containerizing services on AWS EKS and collaborating with product/ops in rapid sprints.</li>
-            </ul>
-
-            <div className="exp-tags">
-              <span>Python</span><span>FastAPI</span><span>Redis</span><span>Postgres</span><span>Docker CI/CD</span><span>AWS</span><span>Kubernetes</span>
-            </div>
-          </div>
-        </article>
-        <article className="exp-card">
-          <img
-            className="exp-logo"
-            aria-hidden="true"
-            src={new URL('../assets/zillow_logo.png', import.meta.url).href}
-            alt="Zillow"
-            loading="lazy"
-          />
-          <div className="exp-body">
-            <header className="exp-head">
-              <h3 className="exp-role">Software Engineering Intern — Android</h3>
-              <div className="exp-meta">Zillow · Summer 2023 · San Francisco, CA</div>
-            </header>
-
-            <ul className="exp-points">
-              <li>Migrated legacy XML layouts to Jetpack Compose, and supported KMM modules for cross-platform features.</li>
-              <li>Built dynamic in-app modals with Firebase Remote Config + JSON schema for faster product launches.</li>
-              <li>Shipped a GPT-powered lead-reply hackathon project that auto-generated 1,000+ agent responses in its first week.</li>
-            </ul>
-
-            <div className="exp-tags">
-              <span>Kotlin</span><span>Compose</span><span>Android SDK</span><span>Gradle</span><span>GitLab CI/CD</span><span>Firebase</span>
-            </div>
-          </div>
-        </article>
+        <ExperienceCard
+          logoSrc={new URL('../assets/endv_logo.png', import.meta.url).href}
+          logoAlt="Endeavor"
+          role="Software Engineer — Contractor"
+          meta="Endeavor · 2025 · San Francisco, CA"
+          points={[
+            'Architected a distributed email-processing pipeline that turned Outlook messages into structured tasks with multi-tenant filtering for scalable client integrations.',
+            'Improved performance by cutting database load 50%+ with a write-through Redis cache for timestamp lookups.',
+            'Shipped production features by containerizing services on AWS EKS and collaborating with product/ops in rapid sprints.',
+          ]}
+          tags={[
+            'Python','FastAPI','Redis','Postgres','Docker CI/CD','AWS','Kubernetes'
+          ]}
+        />
+        <ExperienceCard
+          logoSrc={new URL('../assets/zillow_logo.png', import.meta.url).href}
+          logoAlt="Zillow"
+          role="Software Engineering Intern — Android"
+          meta="Zillow · Summer 2023 · San Francisco, CA"
+          points={[
+            'Migrated legacy XML layouts to Jetpack Compose, and supported KMM modules for cross-platform features.',
+            'Built dynamic in-app modals with Firebase Remote Config + JSON schema for faster product launches.',
+            'Shipped a GPT-powered lead-reply hackathon project that auto-generated 1,000+ agent responses in its first week.',
+          ]}
+          tags={[
+            'Kotlin','Compose','Android SDK','Gradle','GitLab CI/CD','Firebase'
+          ]}
+        />
       </section>
 
       <hr className="section-divider"/>
@@ -400,43 +298,7 @@ export default function Home() {
         <h2 className="section-title">Let’s build together</h2>
         <p className="contact-sub">Open to iOS/Android, product engineering, UX, and scrappy dev roles.</p>
         
-        {formState.succeeded ? (
-          <div className="form-success">
-            <h3>Thanks for reaching out!</h3>
-            <p>I'll get back to you soon.</p>
-          </div>
-        ) : (
-          <form className="contact-form" action="https://formspree.io/f/xpwjldgo" onSubmit={handleFormSubmit}>
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" required></input>
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" required></input>
-            </label>
-            <label className="full">
-              <span>Message</span>
-              <textarea name="message" rows="5" required></textarea>
-            </label>
-
-            <div className="form-footer">
-              <button type="submit" className="btn-primary" disabled={formState.submitting}>
-                {formState.submitting ? 'Sending...' : 'Send'}
-              </button>
-
-              <div className="social-links">
-                <a href="https://instagram.com/elwin.he" target="_blank" rel="noreferrer">
-                  <img src={new URL('../assets/instagram.webp', import.meta.url).href} alt="Instagram" />
-                </a>
-                <a href="https://linkedin.com/in/elwinhe" target="_blank" rel="noreferrer">
-                  <img src={new URL('../assets/linkedin.webp', import.meta.url).href} alt="LinkedIn" />
-                </a>
-              </div>
-            </div>
-            {formState.error && <p className="form-error">{formState.error}</p>}
-          </form>
-        )}
+        <ContactForm />
       </section>
 
       <footer className="site-footer">
