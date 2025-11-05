@@ -262,7 +262,7 @@ export default function Home() {
       <section className="section experience" id="experience" ref={experienceRef}>
         <h2 className="section-title">Experience</h2>
         <ExperienceCard
-          logoSrc={new URL('../assets/ck.png', import.meta.url).href}
+          logoSrc={new URL('../assets/cklogo.png', import.meta.url).href}
           logoAlt="Clout Kitchen"
           role="Software Engineer"
           meta="Clout Kitchen · October 2025 · San Francisco, CA"
