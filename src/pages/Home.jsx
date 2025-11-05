@@ -275,7 +275,7 @@ export default function Home() {
           logoSrc={new URL('../assets/endv_logo.png', import.meta.url).href}
           logoAlt="Endeavor"
           role="Software Engineer — Contractor"
-          meta="Endeavor · 2025 · San Francisco, CA"
+          meta="Endeavor · June 2025 · San Francisco, CA"
           points={[
             'Architected a distributed email-processing pipeline that turned Outlook messages into structured tasks with multi-tenant filtering for scalable client integrations.',
             'Improved performance by cutting database load 50%+ with a write-through Redis cache for timestamp lookups.',
