@@ -164,7 +164,7 @@ export default function Home() {
             <div className="text-1">Hey, I'm Elwin</div>
             <div className="text-2">Product Engineer & UX</div>
             <div className="text-3">
-              From boba shops to mobile apps — I turn ideas into systems. Specializes in end-to-end execution and thoughtful interfaces. Former android engineer intern at Zillow.
+              From boba shops to mobile apps — I turn ideas into systems. Specializes in end-to-end execution and thoughtful interfaces. Currently building at Clout Kitchen. Former android engineer intern at Zillow.
             </div>
             <ul className="links">
               <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2025.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer" className="btn btn-solid">Resume</a></li>
@@ -262,6 +262,16 @@ export default function Home() {
       <section className="section experience" id="experience" ref={experienceRef}>
         <h2 className="section-title">Experience</h2>
         <ExperienceCard
+          logoSrc={new URL('../assets/ck.png', import.meta.url).href}
+          logoAlt="Clout Kitchen"
+          role="Software Engineer"
+          meta="Clout Kitchen · October 2025 · San Francisco, CA"
+          points={[
+          ]}
+          tags={[
+          ]}
+        />
+        <ExperienceCard
           logoSrc={new URL('../assets/endv_logo.png', import.meta.url).href}
           logoAlt="Endeavor"
           role="Software Engineer — Contractor"
@@ -279,7 +289,7 @@ export default function Home() {
           logoSrc={new URL('../assets/zillow_logo.png', import.meta.url).href}
           logoAlt="Zillow"
           role="Software Engineering Intern — Android"
-          meta="Zillow · Summer 2023 · San Francisco, CA"
+          meta="Zillow · May 2023 · San Francisco, CA"
           points={[
             'Migrated legacy XML layouts to Jetpack Compose, and supported KMM modules for cross-platform features.',
             'Built dynamic in-app modals with Firebase Remote Config + JSON schema for faster product launches.',
@@ -294,7 +304,7 @@ export default function Home() {
       <hr className="section-divider"/>
 
       <section className="section contact" id="contact" ref={contactRef}>
-        <h2 className="section-title">Let’s build together</h2>
+        <h2 className="section-title">Let's build together</h2>
         <p className="contact-sub">Open to iOS/Android, product engineering, UX, and scrappy dev roles.</p>
         
         <ContactForm />
