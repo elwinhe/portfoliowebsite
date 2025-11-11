@@ -262,30 +262,6 @@ export default function Home() {
       <section className="section experience" id="experience" ref={experienceRef}>
         <h2 className="section-title">Experience</h2>
         <ExperienceCard
-          logoSrc={new URL('../assets/cklogo.png', import.meta.url).href}
-          logoAlt="Clout Kitchen"
-          role="Software Engineer"
-          meta="Clout Kitchen · October 2025 · San Francisco, CA"
-          points={[
-          ]}
-          tags={[
-          ]}
-        />
-        <ExperienceCard
-          logoSrc={new URL('../assets/endv_logo.png', import.meta.url).href}
-          logoAlt="Endeavor"
-          role="Software Engineer — Contractor"
-          meta="Endeavor · June 2025 · San Francisco, CA"
-          points={[
-            'Architected a distributed email-processing pipeline that turned Outlook messages into structured tasks with multi-tenant filtering for scalable client integrations.',
-            'Improved performance by cutting database load 50%+ with a write-through Redis cache for timestamp lookups.',
-            'Shipped production features by containerizing services on AWS EKS and collaborating with product/ops in rapid sprints.',
-          ]}
-          tags={[
-            'Python','FastAPI','Redis','Postgres','Docker CI/CD','AWS','Kubernetes'
-          ]}
-        />
-        <ExperienceCard
           logoSrc={new URL('../assets/zillow_logo.png', import.meta.url).href}
           logoAlt="Zillow"
           role="Software Engineering Intern — Android"
