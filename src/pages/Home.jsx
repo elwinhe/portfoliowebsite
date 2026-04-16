@@ -162,9 +162,9 @@ export default function Home() {
         <div className="container-wide hero">
           <div className="home-content">
             <div className="text-1">Hey, I'm Elwin</div>
-            <div className="text-2">Product Engineer & UX</div>
+            <div className="text-2">Software Engineer & Founder</div>
             <div className="text-3">
-              From boba shops to mobile apps — I turn ideas into systems. Specializes in end-to-end execution and thoughtful interfaces. Currently building at Clouted, former android engineer intern at Zillow.
+              From 30,000 boba orders to creator payout systems — I build the infrastructure behind things that actually matter. Most recently at an a16z-backed media startup, shipping video validation pipelines and campaign tooling at scale.
             </div>
             <ul className="links">
               <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2026.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer" className="btn btn-solid">Resume</a></li>
@@ -262,18 +262,18 @@ export default function Home() {
       <section className="section experience" id="experience" ref={experienceRef}>
         <h2 className="section-title">Experience</h2>
         <ExperienceCard
-          logoSrc={new URL('../assets/Avatar.png', import.meta.url).href}
+          logoSrc={new URL('../assets/Avatar.svg', import.meta.url).href}
           logoAlt="Clouted"
           role="Software Engineer"
           meta="Clouted · October 2025 · San Francisco, CA"
           points={[
             'Built concurrent video download and validation pipeline with rotating proxies + automated content moderation, including audio fingerprinting, video keyframe analysis, and caption transcription validation, across Instagram, TikTok, and YouTube.',
             'Developed a full-stack creator marketplace (campaign discovery → submission → payouts), supporting end-to-end campaign execution and real-time performance tracking.',
-            'Instrumented product analytics with PostHog across web + Discord flows, unlocking cross-channel attribution and informing growth decisions.',
-            'Vibed with product and design teams to iterate on features, optimize user experience, and ensure alignment with business goals in a fast-paced startup environment.'
+            'Instrumented cross-channel product analytics with PostHog across web and Discord flows.',
+            'Shipped concurrent SMS broadcast system (Semaphore) with dashboard reporting, facilitating 7,000+ festival presale signups via fan-out message dispatch.'
           ]}
           tags={[
-            'Python','FastAPI','Redis','Postgres','Docker CI/CD','AWS','Kubernetes'
+            'TypeScript','React','Redis','PostgreSQL','tRPC','Drizzle ORM','PostHog','Python','FastAPI','GCP'
           ]}
         />
         <ExperienceCard
