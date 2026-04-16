@@ -167,7 +167,7 @@ export default function Home() {
               From boba shops to mobile apps — I turn ideas into systems. Specializes in end-to-end execution and thoughtful interfaces. Currently building at Clouted, former android engineer intern at Zillow.
             </div>
             <ul className="links">
-              <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2025.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer" className="btn btn-solid">Resume</a></li>
+              <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2026.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer" className="btn btn-solid">Resume</a></li>
               <li className="contact"><a href="#contact" onClick={handleLinkClick} className="btn btn-outline">Get in touch</a></li>
             </ul>
           </div>
