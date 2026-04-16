@@ -265,7 +265,7 @@ export default function Home() {
           logoSrc={new URL('../assets/Avatar.svg', import.meta.url).href}
           logoAlt="Clouted"
           role="Software Engineer"
-          meta="Clouted · October 2025 · San Francisco, CA"
+          meta="Clouted · Oct 2025 · San Francisco, CA"
           points={[
             'Built concurrent video download and validation pipeline with rotating proxies + automated content moderation, including audio fingerprinting, video keyframe analysis, and caption transcription validation, across Instagram, TikTok, and YouTube.',
             'Developed a full-stack creator marketplace (campaign discovery → submission → payouts), supporting end-to-end campaign execution and real-time performance tracking.',
