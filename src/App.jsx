@@ -5,8 +5,11 @@ import Home from './pages/Home'
 import TippitTea from './pages/TippitTea'
 import Voteable from './pages/Voteable'
 import AvocadoApp from './pages/AvocadoApp'
+import useCursorGlow from './hooks/useCursorGlow'
 
 function App() {
+  useCursorGlow()
+
   return (
     <BrowserRouter>
       <Navbar />

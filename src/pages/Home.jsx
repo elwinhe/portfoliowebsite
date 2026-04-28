@@ -127,7 +127,7 @@ export default function Home() {
   // Contact form handled by ContactForm component
 
   return (
-    <main style={{ position: 'relative', zIndex: 1 }}>
+    <main className="home-page" style={{ position: 'relative', zIndex: 1 }}>
       {/* Fade-in observer for gallery, experience, and contact sections */}
       <InteractionObserver
         refs={[galleryRef, experienceRef, recentProjectsRef, contactRef]}
@@ -315,7 +315,7 @@ export default function Home() {
 
       <section className="section contact" id="contact" ref={contactRef}>
         <h2 className="section-title">Let's build together</h2>
-        <p className="contact-sub">Open to iOS/Android, product engineering, UX, and scrappy dev roles.</p>
+        <p className="contact-sub">Open to design engineering and product roles — I build things that look right and work at scale.</p>
         
         <ContactForm />
       </section>
