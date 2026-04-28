@@ -3,6 +3,7 @@ import InteractionObserver from '../components/InteractionObserver'
 import Carousel from '../components/Carousel'
 import IPhoneProject from '../components/IPhoneProject'
 import ExperienceCard from '../components/ExperienceCard'
+import RecentProjectCard from '../components/RecentProjectCard'
 import ContactForm from '../components/ContactForm'
 import { useState, useEffect, useRef } from 'react'
 import './home-fullbleed.css'
@@ -13,6 +14,7 @@ export default function Home() {
   const galleryRef = useRef(null);
   const projectRowRef = useRef(null);
   const experienceRef = useRef(null);
+  const recentProjectsRef = useRef(null);
   const contactRef = useRef(null);
   const voteableVideoRef = useRef(null);
 
@@ -128,7 +130,7 @@ export default function Home() {
     <main style={{ position: 'relative', zIndex: 1 }}>
       {/* Fade-in observer for gallery, experience, and contact sections */}
       <InteractionObserver
-        refs={[galleryRef, experienceRef, contactRef]}
+        refs={[galleryRef, experienceRef, recentProjectsRef, contactRef]}
         threshold={0.1}
         rootMargin="0px 0px -10% 0px"
         once
@@ -265,7 +267,7 @@ export default function Home() {
           logoSrc={new URL('../assets/Avatar.svg', import.meta.url).href}
           logoAlt="Clouted"
           role="Software Engineer"
-          meta="Clouted · Oct 2025 · San Francisco, CA"
+          meta="Clouted · Jun 2025 · San Francisco, CA"
           points={[
             'Built concurrent video download and validation pipeline with rotating proxies + automated content moderation, including audio fingerprinting, video keyframe analysis, and caption transcription validation, across Instagram, TikTok, and YouTube.',
             'Developed a full-stack creator marketplace (campaign discovery → submission → payouts), supporting end-to-end campaign execution and real-time performance tracking.',
@@ -289,6 +291,23 @@ export default function Home() {
           tags={[
             'Kotlin','Compose','Android SDK','Gradle','GitLab CI/CD','Firebase'
           ]}
+        />
+      </section>
+
+      <hr className="section-divider"/>
+
+      <section
+        className="section recent-projects"
+        id="recent-projects"
+        ref={recentProjectsRef}
+        aria-labelledby="recent-projects-heading"
+      >
+        <h2 className="section-title" id="recent-projects-heading">Lately I've been building...</h2>
+        <RecentProjectCard
+          title={<>Stratton<span className="recent-project-title-light">Labs</span></>}
+          ariaLabel="StrattonLabs (opens in new tab)"
+          subtitle="AI UGC Ads studio, developed AI gen workflows, designed and implemented landing page"
+          href="https://vyreal-sparkle-studio.lovable.app/"
         />
       </section>
 

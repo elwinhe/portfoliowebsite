@@ -697,7 +697,18 @@
   transform: translateY(0);
 }
 
-.section.experience, .section.contact {
+.section.recent-projects {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section.recent-projects.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section.experience, .section.contact, .section.recent-projects {
   padding: var(--space-10) var(--space-5);
   max-width: 1000px;
   margin: 0 auto;
@@ -730,6 +741,51 @@
   padding:4px 12px; border-radius:999px;
   margin-bottom: var(--space-1);
   margin-top: var(--space-1);
+}
+
+.recent-project-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: 0 4px 20px rgba(0,0,0,.06);
+  color: var(--color-text);
+  text-decoration: none;
+  margin-bottom: var(--space-5);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.recent-project-card:hover,
+.recent-project-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+.recent-project-body { min-width: 0; }
+.recent-project-title {
+  margin: 0 0 var(--space-1);
+  font-size: clamp(20px, 4vw, 28px);
+  line-height: 1.4;
+}
+.recent-project-title-light {
+  font-weight: var(--font-weight-regular);
+}
+.recent-project-subtitle {
+  margin: 0;
+  color: var(--color-text-gray);
+  font-size: clamp(16px, 3vw, 20px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+.recent-project-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-gray);
 }
 
 /* Contact */
@@ -838,9 +894,10 @@
 }
 
 /* Responsive */
-@media (max-width: 815){
+@media (max-width: 815px){
   .exp-card{ grid-template-columns: 48px 1fr; padding: var(--space-5); }
   .exp-logo{ width:48px; height:48px; font-size:20px; transform: translateY(8px); }
+  .recent-project-card{ padding: var(--space-5); }
   .contact-form{ grid-template-columns: 1fr; }
 }
 
