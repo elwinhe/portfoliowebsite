@@ -166,7 +166,7 @@ export default function Home() {
             <div className="text-1">Hey, I'm Elwin</div>
             <div className="text-2">Software Engineer & Founder</div>
             <div className="text-3">
-              From 30,000 boba orders to creator payout systems — I build the infrastructure behind things that actually matter. Most recently at an a16z-backed media startup, shipping video validation pipelines and campaign tooling at scale.
+              From 30,000 boba orders to creator payout systems — I build the infrastructure behind things that actually matter.
             </div>
             <ul className="links">
               <li className="resume"><a href={new URL('../assets/RESUME_ELWIN_2026.pdf', import.meta.url).href} target="_blank" rel="noopener noreferrer" className="btn btn-solid">Resume</a></li>
