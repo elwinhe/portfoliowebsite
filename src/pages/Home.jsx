@@ -306,7 +306,7 @@ export default function Home() {
         <RecentProjectCard
           title={<>Stratton<span className="recent-project-title-light">Labs</span></>}
           ariaLabel="StrattonLabs (opens in new tab)"
-          subtitle="AI UGC Ads studio, developed AI gen workflows, designed and implemented landing page"
+          subtitle="AI UGC Ads studio, built the AI gen pipeline, designed and shipped the landing page"
           href="https://vyreal-sparkle-studio.lovable.app/"
         />
       </section>
